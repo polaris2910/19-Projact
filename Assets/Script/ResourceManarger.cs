@@ -7,25 +7,25 @@ public class ResourceController : MonoBehaviour
 {
     [SerializeField] private float healthChangeDelay = 0.5f; // 피해 후 무적 지속 시간
 
-    private BaseController baseController;
-    private StatHandler statHandler;
-    private AnimationHandler animationHandler;
+    private ResourceFactory resourceFactory;
+    //private StatHandler statHandler;
+    //private AnimationHandler animationHandler;
 
     private float timeSinceLastChange = float.MaxValue; // 마지막 체력 변경 이후 경과 시간
 
     public float CurrentHealth { get; private set; } // 현재 체력 (외부 접근만 허용)
-    public float MaxHealth => statHandler.Health; // 최대 체력은 StatHandler로부터 가져옴
+    public float MaxHealth => resourceFactory.Health; // 최대 체력은 StatHandler로부터 가져옴
 
     private void Awake()
     {
-        statHandler = GetComponent<StatHandler>();
-        animationHandler = GetComponent<AnimationHandler>();
-        baseController = GetComponent<BaseController>();
+        resourceFactory = GetComponent<ResourceFactory>();
+        //animationHandler = GetComponent<>();
+        //baseController = GetComponent<>();
     }
 
     private void Start()
     {
-        CurrentHealth = statHandler.Health;
+        CurrentHealth = resourceFactory.Health;
     }
 
     private void Update()
@@ -37,7 +37,7 @@ public class ResourceController : MonoBehaviour
             timeSinceLastChange += Time.deltaTime;
             if (timeSinceLastChange >= healthChangeDelay)
             {
-                animationHandler.InvincibilityEnd();
+                //animationHandler.InvincibilityEnd();
             }
         }
     }
@@ -61,7 +61,7 @@ public class ResourceController : MonoBehaviour
         // 데미지일 경우 (음수)
         if (change < 0)
         {
-            animationHandler.Damage(); // 맞는 애니메이션 실행
+            //animationHandler.Damage(); // 맞는 애니메이션 실행
         }
 
         // 체력이 0 이하가 되면 사망 처리
@@ -76,7 +76,7 @@ public class ResourceController : MonoBehaviour
     private void Death()
     {
 
-        GameManagerDependencyInfo.GameOver();
+        //GameManagerDependencyInfo.GameOver();
     }
 
 }

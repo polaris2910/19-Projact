@@ -11,7 +11,9 @@ public class ObstacleController : MonoBehaviour
     [SerializeField] GameObject bigUpObstaclePrefab;
 
     float obstacleInterval = 1f;
-
+    public float scrollSpeed = 2f;
+    public float resetPosition = -20f;
+    public float startPosition = 20f;
 
 
     Queue<int> objectSpawnData = new Queue<int>();
@@ -28,6 +30,8 @@ public class ObstacleController : MonoBehaviour
         {
             StartCoroutine(SetObstacles());
         }
+
+
     }
 
 
@@ -58,7 +62,7 @@ public class ObstacleController : MonoBehaviour
         }
     }
 
-    
+
 
     public void SetType(int type)
     {
@@ -93,5 +97,4 @@ public class ObstacleController : MonoBehaviour
     {
         Instantiate(upPrefab, new Vector3(7f, 3f, 0f), Quaternion.identity);
     }
-
 }

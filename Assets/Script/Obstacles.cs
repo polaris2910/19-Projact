@@ -12,6 +12,7 @@ public class ObstacleMove : MonoBehaviour
         Move();
     }
 
+
     void Move()
     {
 

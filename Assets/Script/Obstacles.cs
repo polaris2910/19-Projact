@@ -10,7 +10,10 @@ public class Obstacles : MonoBehaviour
     GameObject SmallObstaclePrefab;
     GameObject BigObstaclePrefab;
 
-    
+    private void Update()
+    {
+        Move();
+    }
 
     //이걸 빈 오브젝트에 달아주고 이걸 부모삼아서?
     void SpawnObstacles(GameObject prefab)

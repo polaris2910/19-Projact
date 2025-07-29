@@ -58,14 +58,7 @@ public class ObstacleController : MonoBehaviour
         }
     }
 
-    void SpawnDownObstacles(GameObject downPrefab)
-    {
-        Instantiate(downPrefab, new Vector3(7f, 0f, 0f), Quaternion.identity);
-    }
-    void SpawnUpObstacles(GameObject upPrefab)
-    {
-        Instantiate(upPrefab, new Vector3(7f, 3f, 0f), Quaternion.identity);
-    }
+    
 
     public void SetType(int type)
     {
@@ -90,6 +83,15 @@ public class ObstacleController : MonoBehaviour
             SpawnUpObstacles(bigUpObstaclePrefab);
         }
 
+    }
+
+    void SpawnDownObstacles(GameObject downPrefab)
+    {
+        Instantiate(downPrefab, new Vector3(7f, 0f, 0f), Quaternion.identity);
+    }
+    void SpawnUpObstacles(GameObject upPrefab)
+    {
+        Instantiate(upPrefab, new Vector3(7f, 3f, 0f), Quaternion.identity);
     }
 
 }

@@ -64,7 +64,7 @@ public class ObstacleController : MonoBehaviour
     }
     void SpawnUpObstacles(GameObject upPrefab)
     {
-        Instantiate(upPrefab, new Vector3(7f, 1f, 0f), Quaternion.identity);
+        Instantiate(upPrefab, new Vector3(7f, 3f, 0f), Quaternion.identity);
     }
 
     public void SetType(int type)

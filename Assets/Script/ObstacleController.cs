@@ -16,15 +16,15 @@ public class ObstacleController : MonoBehaviour
     public float startPosition = 20f;
 
 
-    List<int> objectSpawnData = new List<int> { 0, 1, 2, 0, 3, 4, 0, 2, 0, 2, 1 };
-    List<GameObject> objectPool = new List<GameObject>();
+    List<int> objectSpawnData = new List<int> { 0, 1, 2, 0, 3, 4, 0, 2, 0, 2, 1,1,1,1,1,4,2,0,0,0,3,0,1,1,3,2,1,1,1,1,1,1,2,1,1,1,1,1 };
+    Queue<GameObject> objectPool_1 = new Queue<GameObject>();
+    Queue<GameObject> objectPool_2 = new Queue<GameObject>();
+    Queue<GameObject> objectPool_3 = new Queue<GameObject>();
+    Queue<GameObject> objectPool_4 = new Queue<GameObject>();
 
-    private void Start()
-    {
-        AddData();
+    
 
-    }
-
+  
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -35,15 +35,6 @@ public class ObstacleController : MonoBehaviour
 
     }
 
-
-    //시험용으로 
-    //아 혹시 예전에 다이어로그에서 썼던 queue써볼까
-    void AddData()
-    {
-       
-
-    }
-
     IEnumerator SetObstacles()
     {
 
@@ -51,6 +42,7 @@ public class ObstacleController : MonoBehaviour
         //그럼 코루틴을 사용해서 꺼내올까?
         foreach (int data in objectSpawnData)
         {
+            
             SetType(data);
             yield return new WaitForSeconds(obstacleInterval);
         }
@@ -62,35 +54,85 @@ public class ObstacleController : MonoBehaviour
     {
         if (type == 0)
         {
-
+            
         }
         else if (type == 1)
         {
-            SpawnDownObstacles(smallDownObstaclePrefab);
+            
+            SpawnOb(objectPool_1,1,smallDownObstaclePrefab);
+            
         }
         else if (type == 2)
         {
-            SpawnDownObstacles(bigDownObstaclePrefab);
+            SpawnOb(objectPool_2, 2, bigDownObstaclePrefab);
         }
         else if (type == 3)
         {
-            SpawnUpObstacles(smallUpObstaclePrefab);
+            SpawnOb(objectPool_3, 3, smallUpObstaclePrefab);
         }
         else
         {
-            SpawnUpObstacles(bigUpObstaclePrefab);
+            SpawnOb(objectPool_4, 4, bigUpObstaclePrefab);
         }
 
     }
-
-    
-
-    void SpawnDownObstacles(GameObject downPrefab)
+    void SpawnOb(Queue<GameObject> queue,int type,GameObject prefab)
     {
-        Instantiate(downPrefab, new Vector3(7f, 0f, 0f), Quaternion.identity);
+        GameObject obj = null;
+        if (type == 1 || type == 2)
+        {
+            
+            if (queue.Count > 0)
+            {
+                Debug.Log("꺼내쓰기");
+                obj = queue.Dequeue();
+                obj.transform.position = new Vector3(7f, 0f, 0f);
+                obj.SetActive(true);
+                
+
+            }
+            else
+            {
+                obj=Instantiate(prefab, new Vector3(7f, 0f, 0f), Quaternion.identity);
+                
+            }
+            StartCoroutine(ReturnToPool(queue, obj));
+        }
+        else if(type == 3 || type == 4)
+        {
+            if (queue.Count > 0)
+            {
+                Debug.Log("꺼내쓰기");
+                obj = queue.Dequeue();
+                obj.transform.position = new Vector3(7f, 3f, 0f);
+                obj.SetActive(true);
+                
+            }
+            else
+            {
+                obj=Instantiate(prefab, new Vector3(7f, 3f, 0f),Quaternion.identity);
+                
+            }
+            StartCoroutine(ReturnToPool(queue, obj));
+        }
     }
-    void SpawnUpObstacles(GameObject upPrefab)
+    IEnumerator ReturnToPool(Queue<GameObject> queue,GameObject obj)
     {
-        Instantiate(upPrefab, new Vector3(7f, 3f, 0f), Quaternion.identity);
+        yield return new WaitForSeconds(10f);
+        
+        queue.Enqueue(obj);
+        obj.SetActive(false);
+        Debug.Log("풀에돌아감");
+
     }
+
+
+    //void SpawnDownObstacles(GameObject downPrefab)
+    //{
+    //    Instantiate(downPrefab, new Vector3(7f, 0f, 0f), Quaternion.identity);
+    //}
+    //void SpawnUpObstacles(GameObject upPrefab)
+    //{
+    //    Instantiate(upPrefab, new Vector3(7f, 3f, 0f), Quaternion.identity);
+    //}
 }

@@ -59,24 +59,24 @@ public class ObstacleController : MonoBehaviour
         else if (type == 1)
         {
             
-            SpawnOb(objectPool_1,1,smallDownObstaclePrefab);
+            SpawnObstacles(objectPool_1,1,smallDownObstaclePrefab);
             
         }
         else if (type == 2)
         {
-            SpawnOb(objectPool_2, 2, bigDownObstaclePrefab);
+            SpawnObstacles(objectPool_2, 2, bigDownObstaclePrefab);
         }
         else if (type == 3)
         {
-            SpawnOb(objectPool_3, 3, smallUpObstaclePrefab);
+            SpawnObstacles(objectPool_3, 3, smallUpObstaclePrefab);
         }
         else
         {
-            SpawnOb(objectPool_4, 4, bigUpObstaclePrefab);
+            SpawnObstacles(objectPool_4, 4, bigUpObstaclePrefab);
         }
 
     }
-    void SpawnOb(Queue<GameObject> queue,int type,GameObject prefab)
+    void SpawnObstacles(Queue<GameObject> queue,int type,GameObject prefab)
     {
         GameObject obj = null;
         if (type == 1 || type == 2)

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ResourceController : MonoBehaviour
 {
-    [SerializeField] private float healthChangeDelay = 0.5f; // 피해 후 무적 지속 시간
+    [SerializeField] private float healthChangeDelay = 3f; // 피해 후 무적 지속 시간
 
     private ResourceFactory resourceFactory;
     //private StatHandler statHandler;

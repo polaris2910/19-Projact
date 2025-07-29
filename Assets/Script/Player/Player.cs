@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
     {
@@ -50,10 +51,10 @@ public class Player : MonoBehaviour
     }
     bool IsGrounded()
      {
-         if (groundCheck == null) return false;
+        if (groundCheck == null) return false;
 
-         Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-         return collider != null;
+        Collider2D collider = Physics2D.OverlapCircle(transform.position, 0.1f, groundLayer);
+        return collider != null;
      }
 
 }

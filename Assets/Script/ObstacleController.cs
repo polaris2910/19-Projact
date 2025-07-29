@@ -16,7 +16,8 @@ public class ObstacleController : MonoBehaviour
     public float startPosition = 20f;
 
 
-    Queue<int> objectSpawnData = new Queue<int>();
+    List<int> objectSpawnData = new List<int> { 0, 1, 2, 0, 3, 4, 0, 2, 0, 2, 1 };
+    List<GameObject> objectPool = new List<GameObject>();
 
     private void Start()
     {
@@ -39,14 +40,7 @@ public class ObstacleController : MonoBehaviour
     //아 혹시 예전에 다이어로그에서 썼던 queue써볼까
     void AddData()
     {
-        objectSpawnData.Enqueue(0);
-        objectSpawnData.Enqueue(1);
-        objectSpawnData.Enqueue(2);
-        objectSpawnData.Enqueue(1);
-        objectSpawnData.Enqueue(4);
-        objectSpawnData.Enqueue(0);
-        objectSpawnData.Enqueue(1);
-        objectSpawnData.Enqueue(3);
+       
 
     }
 
@@ -88,6 +82,8 @@ public class ObstacleController : MonoBehaviour
         }
 
     }
+
+    
 
     void SpawnDownObstacles(GameObject downPrefab)
     {

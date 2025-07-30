@@ -54,6 +54,10 @@ public class Player : MonoBehaviour
             AudioManager.instance.PlayJumpSound();
             
         }
+        //슬라이드
+        bool isSliding = Input.GetKey(KeyCode.DownArrow);// 땅 위에서만 슬라이드
+        if (_animator != null)
+            _animator.SetBool("isSliding", isSliding);
     }
     bool IsGrounded()
      {

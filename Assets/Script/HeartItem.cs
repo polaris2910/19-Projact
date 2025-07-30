@@ -4,14 +4,14 @@ using UnityEngine;
 
 //public class HeartItem : MonoBehaviour
 //{
-
+//    ResourceManarger resourceManarger;
 //    public float healAmount = 20f;
 
 //    private void OnTriggerEnter2D(Collider2D collision)
 //    {
 //        if (collision.CompareTag("Player"))
 //        {
-//            ResourceController rc = collision.GetComponent<ResourceController>();
+//            resourceManarger rc = collision.GetComponent<ResourceController>();
 //            if (rc != null)
 //            {
 //                bool healed = rc.ChangeHealth(healAmount);

@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
         if (!grounded && yVelocity < -0.1f)
         {
             _animator.SetBool("isFalling", true);
+            _animator.ResetTrigger("Jump");
         }
         else
         {
@@ -69,8 +70,6 @@ public class Player : MonoBehaviour
         bool isSliding = Input.GetKey(KeyCode.DownArrow);// 땅 위에서만 슬라이드
         if (_animator != null)
             _animator.SetBool("isSliding", isSliding);
-
-
     }
     bool IsGrounded()
      {
@@ -79,9 +78,15 @@ public class Player : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return collider != null;
      }
-    
-    //이 부분은 Consumable(즉 먹을 수 있는 아이템들 이면 Eat()을 실행시키는 메서드
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    public void TakeDamage()    //피격 애니메이션
+    {
+        if (_animator != null)
+            _animator.SetTrigger("Hurt");
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         IConsumable consumable = collision.gameObject.GetComponent<IConsumable>();
         consumable?.Eat();

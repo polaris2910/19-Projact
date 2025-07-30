@@ -9,13 +9,13 @@ public class ObstacleController : MonoBehaviour
     [SerializeField] GameObject bigDownObstaclePrefab;
     [SerializeField] GameObject bigUpObstaclePrefab;
 
-    float obstacleInterval = 4f;
-    Vector3 DownSpawnPosition = new Vector3(7f, -2.7f, 0f);
-    Vector3 UpSpawnPosition= new Vector3(7f, 7f, 0f);
+    float obstacleInterval = 3f;
+    Vector3 DownSpawnPosition = new Vector3(13f, -2.1f, 0f);
+    Vector3 UpSpawnPosition= new Vector3(13f, 5f, 0f);
 
 
 
-    List<int> objectSpawnData = new List<int> { 0, 1, 2, 0, 3,3, 0, 2, 0, 2, 1,1,1,1,1,2,0,0,0,3,0,1,1,3,2,1,1,1,1,1,1,2,1,1,1,1,1 };
+    List<int> objectSpawnData = new List<int> { 3,2,0, 1, 2, 0, 3,3, 0, 2, 0, 2, 1,1,1,1,1,2,0,0,0,3,0,1,1,3,2,1,1,1,1,1,1,2,1,1,1,1,1 };
     Queue<GameObject> objectPool_1 = new Queue<GameObject>();
     Queue<GameObject> objectPool_2 = new Queue<GameObject>();
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
@@ -79,7 +79,7 @@ public class ObstacleController : MonoBehaviour
             
             if (queue.Count > 0)
             {
-                Debug.Log("²¨³»¾²±â");
+                
                 obj = queue.Dequeue();
                 obj.transform.position = DownSpawnPosition;
                 obj.SetActive(true);
@@ -97,7 +97,7 @@ public class ObstacleController : MonoBehaviour
         {
             if (queue.Count > 0)
             {
-                Debug.Log("²¨³»¾²±â");
+                
                 obj = queue.Dequeue();
                 obj.transform.position = UpSpawnPosition;
                 obj.SetActive(true);

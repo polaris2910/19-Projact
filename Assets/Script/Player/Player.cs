@@ -79,8 +79,11 @@ public class Player : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return collider != null;
      }
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    //이 부분은 Consumable(즉 먹을 수 있는 아이템들 이면 Eat()을 실행시키는 메서드
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("충돌");
+        IConsumable consumable = collision.gameObject.GetComponent<IConsumable>();
+        consumable?.Eat();
     }
 }

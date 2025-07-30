@@ -2,25 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartItem : MonoBehaviour
+public class HeartItem : MonoBehaviour,IConsumable
 {
 
     public float healAmount = 20f;
+    ResourceManager _resourceManager;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Eat(ResourceManager resourceManager)
     {
-        if (collision.CompareTag("Player"))
-        {
-            ResourceManager rc = collision.GetComponent<ResourceManager>();
-            if (rc != null)
-            {
-                bool healed = rc.ChangeHealth(healAmount);
-                if (healed)
-                {
-                    Debug.Log("체력 회복!");
-                    gameObject.SetActive(false);
-                }
-            }
-        }
+        this._resourceManager = resourceManager;
+        _resourceManager.ChangeHealth(healAmount);
+        gameObject.SetActive(false);
     }
+
+    
 }

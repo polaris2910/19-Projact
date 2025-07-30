@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IConsumable
 {
-    public void Eat();
+    public void Eat(ResourceManager resourceManager);
 
 }
 

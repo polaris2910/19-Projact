@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     private int jumpCount = 0;
     private int maxjumpCount = 2;
+    ResourceManager _resourceManager;
 
     private bool wasGrounded = false;
     void Start()
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
      _animator = GetComponentInChildren<Animator>();
      _rigidbody = GetComponent<Rigidbody2D>(); 
      _animator = GetComponent<Animator>();
+     _resourceManager = GetComponent<ResourceManager>();
 
         if (_rigidbody == null)
              Debug.LogError("Rigidbody2D not found!");
@@ -89,7 +91,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IConsumable consumable = collision.gameObject.GetComponent<IConsumable>();
-        consumable?.Eat();
+        consumable?.Eat(_resourceManager);
     }
     
 }

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartItem : MonoBehaviour,IConsumable
+class HeartItem : MonoBehaviour,IConsumable
 {
 
-    public float healAmount = 20f;
+    private int healAmount = 1;
     ResourceManager _resourceManager;
 
     public void Eat(ResourceManager resourceManager)

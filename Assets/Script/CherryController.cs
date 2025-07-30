@@ -37,9 +37,13 @@ public class CherryController : MonoBehaviour
         {
             SpawnCherry(CherryPool_1 , cherryPattern_1, CherryPatternPosition_2);
         }
-        else
+        else if(type==3)
         {
             SpawnCherry(CherryPool_0, cherryPattern_0,CherryPatternPosition_0);
+        }
+        else
+        {
+            
         }
 
     }
@@ -50,7 +54,7 @@ public class CherryController : MonoBehaviour
 
         if (queue.Count > 0)
         {
-            Debug.Log("체리꺼내기");
+            
             obj = queue.Dequeue();
             obj.transform.position = cherryPosition;
             obj.SetActive(true);
@@ -71,6 +75,6 @@ public class CherryController : MonoBehaviour
         yield return new WaitForSeconds(10f);
         queue.Enqueue(obj);
         obj.SetActive(false);
-        Debug.Log("체리다시넣기");
+        
     }
 }

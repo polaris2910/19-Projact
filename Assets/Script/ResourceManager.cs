@@ -16,8 +16,12 @@ public class ResourceManager : MonoBehaviour
 
     private float timeSinceLastChange = float.MaxValue; // 마지막 체력 변경 이후 경과 시간
 
-    public float CurrentHealth { get; private set; } // 현재 체력 (외부 접근만 허용)
+    [field: SerializeField] public float CurrentHealth { get; private set; } // 현재 체력 (외부 접근만 허용)
     public float MaxHealth => resourceFactory.Health; // 최대 체력은 가져옴
+
+    public float Speed { get; private set; }  //이 부분 팩토리랑 연결 나중에 해주세요
+
+    public int Score {  get; private set; } //이 부분도 팩토리랑 연결해주세요
 
     private void Awake()
     {
@@ -72,6 +76,19 @@ public class ResourceManager : MonoBehaviour
 
         return true;
     }
+    public void ChangeSpeed(float speed)
+    {
+        Speed += speed;
+        Debug.Log("속도업");
+        //속도 증가
+    }
+
+    public void ChangeScore(int score)
+    {
+        Score += score;
+        Debug.Log($"얻은 점수 {score}, 현재점수 {Score}");
+    }
+
 
     private void Death()
     {

@@ -8,3 +8,9 @@ public interface IConsumable
 
 }
 
+public interface IDeletable
+{
+    public void DisableObject();
+
+}
+

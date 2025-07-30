@@ -7,16 +7,18 @@ using UnityEngine.UIElements;
 public class CherryController : MonoBehaviour
 {
     Vector3 CherryPatternPosition_0 = new Vector3(13f,-2f,0f);
+    Vector3 CherryPatternPosition_1 = new Vector3(13f, 0f, 0f);
+    Vector3 CherryPatternPosition_2=new Vector3(13f,1f,0f);
 
 
     Queue<GameObject> CherryPool_0 = new Queue<GameObject>();
     Queue<GameObject> CherryPool_1 = new Queue<GameObject>();
-    Queue<GameObject> CherryPool_2 = new Queue<GameObject>();
+    
     
 
     [SerializeField] GameObject cherryPattern_0;
     [SerializeField] GameObject cherryPattern_1;
-    [SerializeField] GameObject cherryPattern_2;
+  
     
 
     public void SetCherry(int type)
@@ -29,15 +31,15 @@ public class CherryController : MonoBehaviour
         }
         else if(type==1)
         {
-
+            SpawnCherry(CherryPool_1, cherryPattern_1, CherryPatternPosition_1);
         }
         else if(type ==2)
         {
-
+            SpawnCherry(CherryPool_1 , cherryPattern_1, CherryPatternPosition_2);
         }
         else
         {
-
+            SpawnCherry(CherryPool_0, cherryPattern_0,CherryPatternPosition_0);
         }
 
     }
@@ -52,6 +54,10 @@ public class CherryController : MonoBehaviour
             obj = queue.Dequeue();
             obj.transform.position = cherryPosition;
             obj.SetActive(true);
+            foreach(Transform cherry in obj.transform)
+            {
+                cherry.gameObject.SetActive(true);
+            }
         }
         else
         {

@@ -17,7 +17,7 @@ public class ResourceManager : MonoBehaviour
     private float timeSinceLastChange = float.MaxValue; // 마지막 체력 변경 이후 경과 시간
 
     public float CurrentHealth { get; private set; } // 현재 체력 (외부 접근만 허용)
-    public float MaxHealth => resourceFactory.Health; // 최대 체력은 StatHandler로부터 가져옴
+    public float MaxHealth => resourceFactory.Health; // 최대 체력은 가져옴
 
     private void Awake()
     {
@@ -29,6 +29,7 @@ public class ResourceManager : MonoBehaviour
     private void Start()
     {
         CurrentHealth = resourceFactory.Health;
+        
     }
 
     private void Update()

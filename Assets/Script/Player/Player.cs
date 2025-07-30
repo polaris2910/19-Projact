@@ -59,5 +59,8 @@ public class Player : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return collider != null;
      }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Ãæµ¹");
+    }
 }

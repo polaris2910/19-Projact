@@ -6,7 +6,13 @@ public class Obstacles : MonoBehaviour
 {
 
     float movingSpeed = 6f;
+    Rigidbody2D _rigidbody2D;
     // Update is called once per frame
+
+    private void Start()
+    {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
         Move();
@@ -16,7 +22,7 @@ public class Obstacles : MonoBehaviour
     void Move()
     {
 
-        transform.Translate(Vector2.left * movingSpeed * Time.deltaTime);
+        _rigidbody2D.velocity=Vector3.left*movingSpeed;
     }
 
     

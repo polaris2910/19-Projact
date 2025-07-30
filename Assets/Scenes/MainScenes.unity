@@ -583,8 +583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfc3cd80a349f4e83f9f7a2cab2ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetPosition: -32.256
-  startPosition: 32.256
 --- !u!212 &229216807
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -734,8 +732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfc3cd80a349f4e83f9f7a2cab2ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetPosition: -32.256
-  startPosition: 32.256
 --- !u!1 &435192624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,9 +2371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b49c68510701b44984b8b40f56075f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 3
-  resetPosition: -45
-  startPosition: 45
 --- !u!1 &627310723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,9 +2418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b49c68510701b44984b8b40f56075f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 3
-  resetPosition: -45
-  startPosition: 45
 --- !u!19719996 &627310726
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -4145,8 +4135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfc3cd80a349f4e83f9f7a2cab2ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetPosition: -32.256
-  startPosition: 32.256
 --- !u!212 &1156751570
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4382,8 +4370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfc3cd80a349f4e83f9f7a2cab2ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetPosition: -32.256
-  startPosition: 32.256
 --- !u!212 &1295649138
 SpriteRenderer:
   m_ObjectHideFlags: 0

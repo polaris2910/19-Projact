@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        float ratio = resourceManager.CurrentHealth / resourceManager.MaxHealth;
+        float ratio = resourceManager.CurrentHealth;
         healthBar.value = ratio;
     }
 }

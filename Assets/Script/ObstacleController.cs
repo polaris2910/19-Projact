@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObstacleController : MonoBehaviour
 {
 
+
+    [SerializeField] CherryController cherryController;
     [SerializeField] GameObject smallDownObstaclePrefab;
     [SerializeField] GameObject bigDownObstaclePrefab;
     [SerializeField] GameObject bigUpObstaclePrefab;
@@ -15,7 +17,7 @@ public class ObstacleController : MonoBehaviour
 
 
 
-    List<int> objectSpawnData = new List<int> { 3,2,0, 1, 2, 0, 3,3, 0, 2, 0, 2, 1,1,1,1,1,2,0,0,0,3,0,1,1,3,2,1,1,1,1,1,1,2,1,1,1,1,1 };
+    public List<int> objectSpawnData = new List<int> { 1,0,0,3,2,0, 1, 2, 0, 3,3, 0, 2, 0, 2, 1,1,1,1,1,2,0,0,0,3,0,1,1,3,2,1,1,1,1,1,1,2,1,1,1,1,1 };
     Queue<GameObject> objectPool_1 = new Queue<GameObject>();
     Queue<GameObject> objectPool_2 = new Queue<GameObject>();
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
@@ -43,6 +45,7 @@ public class ObstacleController : MonoBehaviour
         {
             
             SetType(data);
+            cherryController.SetCherry(data);
             yield return new WaitForSeconds(obstacleInterval);
         }
     }
@@ -53,7 +56,7 @@ public class ObstacleController : MonoBehaviour
     {
         if (type == 0)
         {
-            
+            Debug.Log("е╦ют 0");
         }
         else if (type == 1)
         {

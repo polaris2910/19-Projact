@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cherry : MonoBehaviour
+public class Cherry : MonoBehaviour,IConsumable
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Eat()
     {
-        if (collision.CompareTag("Player")) 
-        {
-            this.gameObject.SetActive(false);
-        }
+        //점수올라가기
+        this.gameObject.SetActive(false);
     }
+
+    
 }

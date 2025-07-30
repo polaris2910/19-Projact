@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
-public class ResourceManarger : MonoBehaviour
+public class ResourceManager : MonoBehaviour
 {
     public Player player;
 
     [SerializeField] private float healthChangeDelay = 3f; // 피해 후 무적 지속 시간
+    public bool TookDamageDuringRun { get; private set; }
 
     private ResourceFactory resourceFactory;
     //private StatHandler statHandler;
@@ -47,26 +48,22 @@ public class ResourceManarger : MonoBehaviour
     // 체력 변경 함수 (피해 or 회복)
     public bool ChangeHealth(float change)
     {
-        // 변화 없거나 무적 상태면 무시
         if (change == 0 || timeSinceLastChange < healthChangeDelay)
         {
             return false;
         }
 
-        timeSinceLastChange = 0f; // 다시 무적 시작
+        timeSinceLastChange = 0f;
 
-        // 체력 적용
         CurrentHealth += change;
-        CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth;
-        CurrentHealth = CurrentHealth < 0 ? 0 : CurrentHealth;
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0f, MaxHealth);
 
-        // 데미지일 경우 (음수)
-        if (change < 0)
+        if (change < 0f)
         {
-            //Player.Damage(); // 맞는 애니메이션 실행
+            TookDamageDuringRun = true; // 피해 발생 기록
+             //Player.Damage(); 
         }
 
-        // 체력이 0 이하가 되면 사망 처리
         if (CurrentHealth <= 0f)
         {
             Death();
@@ -79,6 +76,11 @@ public class ResourceManarger : MonoBehaviour
     {
 
         GameManager.instance.GameOver();
+    }
+
+    public void ResetDamageRecord()
+    {
+        TookDamageDuringRun = false;
     }
 
 }

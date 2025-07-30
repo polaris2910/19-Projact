@@ -88,6 +88,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Ãæµ¹");
+        IConsumable consumable = collision.gameObject.GetComponent<IConsumable>();
+        consumable?.Eat();
     }
 }

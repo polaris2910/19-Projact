@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
     {
-    public float jumpForce = 5f;
+    public float jumpForce = 7f;
 
     public Transform groundCheck;
     public LayerMask groundLayer; 
@@ -66,5 +66,8 @@ public class Player : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return collider != null;
      }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Ãæµ¹");
+    }
 }

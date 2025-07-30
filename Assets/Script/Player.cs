@@ -49,5 +49,7 @@ using UnityEngine;
             Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
             return collider != null;
         }
-        
-    }
+
+   
+
+}

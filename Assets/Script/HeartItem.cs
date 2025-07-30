@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealItem : MonoBehaviour
+public class HeartItem : MonoBehaviour
 {
 
     public float healAmount = 20f;

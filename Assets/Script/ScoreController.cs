@@ -28,7 +28,9 @@ public class ScoreController : MonoBehaviour
             //score.stagePoint += 300; 점수 도입 시 활성화
         }
 
+        collision.gameObject.SetActive(false);
     }
 
-    }
+
+    
 }

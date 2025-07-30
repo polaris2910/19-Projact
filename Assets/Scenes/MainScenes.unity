@@ -491,6 +491,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125362829}
   m_CullTransparentMesh: 1
+--- !u!1 &168912584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 168912586}
+  - component: {fileID: 168912585}
+  m_Layer: 0
+  m_Name: ObstacleController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &168912585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168912584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fab6fd8a1a4cef41a66d9bbb4d3b55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallDownObstaclePrefab: {fileID: 4275659189581513816, guid: 1eec83f7f5193c24fb1f57f9db57d712, type: 3}
+  bigDownObstaclePrefab: {fileID: 8023189599874658843, guid: 3e7ce3c0fde359644a7b0d1189c0d733, type: 3}
+  bigUpObstaclePrefab: {fileID: 7875893678911423017, guid: b9f457d6d9fc09e488f0f9a4f7e4711f, type: 3}
+--- !u!4 &168912586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168912584}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5497677, y: 0.9802743, z: 0.06321704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &229216804
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfc3cd80a349f4e83f9f7a2cab2ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 6
   resetPosition: -32.256
   startPosition: 32.256
 --- !u!212 &229216807
@@ -688,7 +734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfc3cd80a349f4e83f9f7a2cab2ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 6
   resetPosition: -32.256
   startPosition: 32.256
 --- !u!1 &435192624
@@ -2330,7 +2375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b49c68510701b44984b8b40f56075f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 6
+  scrollSpeed: 3
   resetPosition: -45
   startPosition: 45
 --- !u!1 &627310723
@@ -2380,7 +2425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b49c68510701b44984b8b40f56075f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 6
+  scrollSpeed: 3
   resetPosition: -45
   startPosition: 45
 --- !u!19719996 &627310726
@@ -4100,7 +4145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfc3cd80a349f4e83f9f7a2cab2ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 6
   resetPosition: -32.256
   startPosition: 32.256
 --- !u!212 &1156751570
@@ -4338,7 +4382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfc3cd80a349f4e83f9f7a2cab2ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 6
   resetPosition: -32.256
   startPosition: 32.256
 --- !u!212 &1295649138
@@ -4985,3 +5028,4 @@ SceneRoots:
   - {fileID: 1232848594}
   - {fileID: 1940428966}
   - {fileID: 1757689789}
+  - {fileID: 168912586}

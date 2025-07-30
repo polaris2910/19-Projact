@@ -7,18 +7,19 @@ public class ObstacleController : MonoBehaviour
 
     [SerializeField] GameObject smallDownObstaclePrefab;
     [SerializeField] GameObject bigDownObstaclePrefab;
-    [SerializeField] GameObject smallUpObstaclePrefab;
     [SerializeField] GameObject bigUpObstaclePrefab;
 
-    float obstacleInterval = 1f;
-    
+    float obstacleInterval = 4f;
+    Vector3 DownSpawnPosition = new Vector3(7f, -2.7f, 0f);
+    Vector3 UpSpawnPosition= new Vector3(7f, 7f, 0f);
 
 
-    List<int> objectSpawnData = new List<int> { 0, 1, 2, 0, 3, 4, 0, 2, 0, 2, 1,1,1,1,1,4,2,0,0,0,3,0,1,1,3,2,1,1,1,1,1,1,2,1,1,1,1,1 };
+
+    List<int> objectSpawnData = new List<int> { 0, 1, 2, 0, 3,3, 0, 2, 0, 2, 1,1,1,1,1,2,0,0,0,3,0,1,1,3,2,1,1,1,1,1,1,2,1,1,1,1,1 };
     Queue<GameObject> objectPool_1 = new Queue<GameObject>();
     Queue<GameObject> objectPool_2 = new Queue<GameObject>();
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
-    Queue<GameObject> objectPool_4 = new Queue<GameObject>();
+    
 
     
 
@@ -57,58 +58,54 @@ public class ObstacleController : MonoBehaviour
         else if (type == 1)
         {
             
-            SpawnObstacles(objectPool_1,1,smallDownObstaclePrefab);
+            SpawnObstacles(objectPool_1,smallDownObstaclePrefab);
             
         }
         else if (type == 2)
         {
-            SpawnObstacles(objectPool_2, 2, bigDownObstaclePrefab);
-        }
-        else if (type == 3)
-        {
-            SpawnObstacles(objectPool_3, 3, smallUpObstaclePrefab);
+            SpawnObstacles(objectPool_2,  bigDownObstaclePrefab);
         }
         else
         {
-            SpawnObstacles(objectPool_4, 4, bigUpObstaclePrefab);
+            SpawnObstacles(objectPool_3, bigUpObstaclePrefab);
         }
 
     }
-    void SpawnObstacles(Queue<GameObject> queue,int type,GameObject prefab)
+    void SpawnObstacles(Queue<GameObject> queue,GameObject prefab)
     {
         GameObject obj = null;
-        if (type == 1 || type == 2)
+        if (queue==objectPool_1 || queue==objectPool_2)
         {
             
             if (queue.Count > 0)
             {
                 Debug.Log("²¨³»¾²±â");
                 obj = queue.Dequeue();
-                obj.transform.position = new Vector3(7f, 0f, 0f);
+                obj.transform.position = DownSpawnPosition;
                 obj.SetActive(true);
                 
 
             }
             else
             {
-                obj=Instantiate(prefab, new Vector3(7f, 0f, 0f), Quaternion.identity);
+                obj=Instantiate(prefab, DownSpawnPosition, Quaternion.identity);
                 
             }
             StartCoroutine(ReturnToPool(queue, obj));
         }
-        else if(type == 3 || type == 4)
+        else if(queue==objectPool_3 )
         {
             if (queue.Count > 0)
             {
                 Debug.Log("²¨³»¾²±â");
                 obj = queue.Dequeue();
-                obj.transform.position = new Vector3(7f, 3f, 0f);
+                obj.transform.position = UpSpawnPosition;
                 obj.SetActive(true);
                 
             }
             else
             {
-                obj=Instantiate(prefab, new Vector3(7f, 3f, 0f),Quaternion.identity);
+                obj=Instantiate(prefab, UpSpawnPosition,Quaternion.identity);
                 
             }
             StartCoroutine(ReturnToPool(queue, obj));

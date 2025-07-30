@@ -5,9 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class TilemapScroller : MonoBehaviour
 {
-    public float scrollSpeed = 6f;
-    public float resetPosition = -32.256f;
-    public float startPosition = 32.256f;
+    private float scrollSpeed = 6f;
+    private float resetPosition = -45f;
+    private float startPosition = 45f;
 
     void Update()
     {

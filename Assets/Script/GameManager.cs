@@ -4,33 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameManager gameManager;
+    public static GameManager instance;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Awake()
     {
-        if (collision.gameObject.tag == "Item")
-        {
-            bool isBlue = collision.gameObject.name.Contains("Blue");
-            bool isGreen = collision.gameObject.name.Contains("Green");
-            bool isGold = collision.gameObject.name.Contains("Gold");
-
-            if (isBlue)
-            {
-                gameManager.stagePoint += 100;
-            }
-            if (isGreen)
-            {
-                gameManager.stagePoint += 200;
-            }
-            if (isGold)
-            {
-                gameManager.stagePoint += 300;
-            }
-
-            collision.gameObject.SetActive(false);
-        }
-
-        }
+        // ΩÃ±€≈Ê «“¥Á
+        instance = this;
     }
-
 }

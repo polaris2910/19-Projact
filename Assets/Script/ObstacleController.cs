@@ -11,9 +11,7 @@ public class ObstacleController : MonoBehaviour
     [SerializeField] GameObject bigUpObstaclePrefab;
 
     float obstacleInterval = 1f;
-    public float scrollSpeed = 2f;
-    public float resetPosition = -20f;
-    public float startPosition = 20f;
+    
 
 
     Queue<int> objectSpawnData = new Queue<int>();

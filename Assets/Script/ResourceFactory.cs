@@ -21,4 +21,11 @@ public class ResourceFactory : MonoBehaviour
         get => speed;
         set => speed = Mathf.Clamp(value, 0, 20);
     }
+    [SerializeField] private int score = 0;
+    public int Score
+    {
+        get => score;
+        set => score = value;
+    }
+
 }

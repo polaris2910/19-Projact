@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BGloop : MonoBehaviour
 {
-    public float scrollSpeed = 6f;
+    float scrollSpeed = 6f;
     public float resetPosition = -32f;
     public float startPosition = 32f;
    

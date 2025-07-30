@@ -8,7 +8,10 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource audioSource;
     [SerializeField] private AudioClip jumpSound;
-    
+    [SerializeField] private AudioClip HurtSound;
+    [SerializeField] private AudioClip DeathSound;
+    [SerializeField] private AudioClip EatSound;
+
     void Awake()
     {
         instance = this;
@@ -24,5 +27,18 @@ public class AudioManager : MonoBehaviour
     {
         Debug.Log("Jump sound played: " + jumpSound?.name);
         PlaySound(jumpSound);
+    }
+
+    public void PlayHurtSound()
+    {
+        PlaySound(HurtSound);
+    }
+    public void PlayDeathSound()
+    {
+        PlaySound(DeathSound);
+    }
+    public void PlayEatSound()
+    {
+        PlaySound(EatSound);
     }
 }

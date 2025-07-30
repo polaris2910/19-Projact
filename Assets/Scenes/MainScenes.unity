@@ -388,6 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   speed: 1
+  score: 0
 --- !u!114 &55522993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +547,7 @@ GameObject:
   - component: {fileID: 168912586}
   - component: {fileID: 168912585}
   - component: {fileID: 168912587}
+  - component: {fileID: 168912588}
   m_Layer: 0
   m_Name: ObstacleController
   m_TagString: Untagged
@@ -565,7 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fab6fd8a1a4cef41a66d9bbb4d3b55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cherryController: {fileID: 168912587}
   smallDownObstaclePrefab: {fileID: 4275659189581513816, guid: 1eec83f7f5193c24fb1f57f9db57d712, type: 3}
   bigDownObstaclePrefab: {fileID: 8023189599874658843, guid: 3e7ce3c0fde359644a7b0d1189c0d733, type: 3}
   bigUpObstaclePrefab: {fileID: 7875893678911423017, guid: b9f457d6d9fc09e488f0f9a4f7e4711f, type: 3}
@@ -599,6 +600,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cherryPattern_0: {fileID: 3850099668747105248, guid: ca9f29f7cf5d37047ace7397969cd3b6, type: 3}
   cherryPattern_1: {fileID: 3850099668747105248, guid: 1a339d1d5fbc4c54caa7f25d2979b3a9, type: 3}
+--- !u!114 &168912588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168912584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b95ecb4a845f843aa585f84ae77aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthItem: {fileID: 5408318316650060951, guid: 325b7a05d57ff414780531167f1e8590, type: 3}
+  speedUpItem: {fileID: 5771228262204452101, guid: f50d42ae30177ef4bbbcc2a686353c51, type: 3}
 --- !u!1 &229216804
 GameObject:
   m_ObjectHideFlags: 0

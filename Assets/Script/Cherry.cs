@@ -9,6 +9,7 @@ public class Cherry : MonoBehaviour,IConsumable
     {
         this._resourceManager = resourceManager;
         //점수올라가기
+        
         this.gameObject.SetActive(false);
     }
 

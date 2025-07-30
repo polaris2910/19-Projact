@@ -6,7 +6,8 @@ public class ObstacleController : MonoBehaviour
 {
 
 
-    [SerializeField] CherryController cherryController;
+    CherryController cherryController;
+    ItemController itemController;
     [SerializeField] GameObject smallDownObstaclePrefab;
     [SerializeField] GameObject bigDownObstaclePrefab;
     [SerializeField] GameObject bigUpObstaclePrefab;
@@ -21,11 +22,15 @@ public class ObstacleController : MonoBehaviour
     Queue<GameObject> objectPool_1 = new Queue<GameObject>();
     Queue<GameObject> objectPool_2 = new Queue<GameObject>();
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
-    
 
-    
 
-  
+    private void Start()
+    {
+        cherryController = GetComponent<CherryController>();
+        itemController = GetComponent<ItemController>();
+    }
+
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -46,6 +51,7 @@ public class ObstacleController : MonoBehaviour
             
             SetType(data);
             cherryController.SetCherry(data);
+            itemController.SetItem(data);
             yield return new WaitForSeconds(obstacleInterval);
         }
     }

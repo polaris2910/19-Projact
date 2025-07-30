@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
     {
-    public float jumpForce = 5f;
+    public float jumpForce = 7f;
 
     public Transform groundCheck;
     public LayerMask groundLayer; 

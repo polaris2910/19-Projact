@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Obstacles : MonoBehaviour
 {
 
     float movingSpeed = 6f;
-    Rigidbody2D _rigidbody2D;
+    
     // Update is called once per frame
 
-    private void Start()
-    {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-    }
+    
     void Update()
     {
         Move();
@@ -22,7 +20,7 @@ public class Obstacles : MonoBehaviour
     void Move()
     {
 
-        _rigidbody2D.velocity=Vector3.left*movingSpeed;
+        transform.Translate(Vector3.left*movingSpeed*Time.deltaTime);
     }
 
     

@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
         if (!grounded && yVelocity < -0.1f)
         {
             _animator.SetBool("isFalling", true);
+            _animator.ResetTrigger("Jump");
         }
         else
         {

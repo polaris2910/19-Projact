@@ -50,6 +50,9 @@ public class Player : MonoBehaviour
 
             if (_animator != null)
                 _animator.SetTrigger("Jump");
+
+            AudioManager.instance.PlayJumpSound();
+            
         }
     }
     bool IsGrounded()

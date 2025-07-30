@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
-public class ResourceController : MonoBehaviour
+public class ResourceManarger : MonoBehaviour
 {
     public Player player;
 

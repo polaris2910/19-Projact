@@ -5,11 +5,6 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
     {
-    public Sprite jumpSprite;    // 점프할 때 이미지
-
-
-    private SpriteRenderer spriteRenderer;
-
     public float jumpForce = 5f;
 
     public Transform groundCheck;
@@ -28,8 +23,6 @@ public class Player : MonoBehaviour
      _animator = GetComponentInChildren<Animator>();
      _rigidbody = GetComponent<Rigidbody2D>(); 
      _animator = GetComponent<Animator>();
-     spriteRenderer = GetComponent<SpriteRenderer>();
-
 
         if (_rigidbody == null)
              Debug.LogError("Rigidbody2D not found!");
@@ -55,13 +48,10 @@ public class Player : MonoBehaviour
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
             jumpCount++;
 
-            if (jumpSprite != null) spriteRenderer.sprite = jumpSprite; //점프 이미지 출력
-
             if (_animator != null)
                 _animator.SetTrigger("Jump");
        
-            AudioManager.instance.PlayJumpSound();
-            
+            AudioManager.instance.PlayJumpSound();     
         }
         //슬라이드
         bool isSliding = Input.GetKey(KeyCode.DownArrow);// 땅 위에서만 슬라이드

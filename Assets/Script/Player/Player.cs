@@ -51,9 +51,9 @@ public class Player : MonoBehaviour
     }
     bool IsGrounded()
      {
-        if (groundCheck == null) return false;
+        if (transform == null) return false;
 
-        Collider2D collider = Physics2D.OverlapCircle(transform.position, 0.1f, groundLayer);
+        Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return collider != null;
      }
 

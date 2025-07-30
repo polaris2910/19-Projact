@@ -191,7 +191,8 @@ Transform:
   m_LocalPosition: {x: -5.56, y: -1.65, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 435192625}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &55522986
@@ -265,7 +266,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 1
+  m_Constraints: 5
 --- !u!212 &55522988
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -331,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 5
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 435192625}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -735,6 +736,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetPosition: -32.256
   startPosition: 32.256
+--- !u!1 &435192624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 435192625}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &435192625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435192624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 55522985}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &481143185
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +780,7 @@ GameObject:
   - component: {fileID: 481143187}
   - component: {fileID: 481143189}
   - component: {fileID: 481143190}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2359,7 +2391,7 @@ GameObject:
   - component: {fileID: 627310727}
   - component: {fileID: 627310726}
   - component: {fileID: 627310725}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4177,7 +4209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232848594}
   - component: {fileID: 1232848593}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

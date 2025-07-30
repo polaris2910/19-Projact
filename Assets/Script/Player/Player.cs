@@ -69,8 +69,6 @@ public class Player : MonoBehaviour
         bool isSliding = Input.GetKey(KeyCode.DownArrow);// 땅 위에서만 슬라이드
         if (_animator != null)
             _animator.SetBool("isSliding", isSliding);
-
-
     }
     bool IsGrounded()
      {
@@ -79,6 +77,14 @@ public class Player : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return collider != null;
      }
+
+    public void TakeDamage()    //피격 애니메이션
+    {
+        if (_animator != null)
+            _animator.SetTrigger("Hurt");
+
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("충돌");

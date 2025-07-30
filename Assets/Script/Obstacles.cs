@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleMove : MonoBehaviour
+public class Obstacles : MonoBehaviour
 {
 
     float movingSpeed = 1f;
@@ -12,11 +12,14 @@ public class ObstacleMove : MonoBehaviour
         Move();
     }
 
+
     void Move()
     {
 
         transform.Translate(Vector2.left * movingSpeed * Time.deltaTime);
     }
+
+    
 }
 
 

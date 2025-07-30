@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class ResourceController : MonoBehaviour
 {
-    [SerializeField] private float healthChangeDelay = 0.5f; // 피해 후 무적 지속 시간
+    public Player player;
+
+    [SerializeField] private float healthChangeDelay = 3f; // 피해 후 무적 지속 시간
 
     private ResourceFactory resourceFactory;
     //private StatHandler statHandler;
@@ -61,7 +63,7 @@ public class ResourceController : MonoBehaviour
         // 데미지일 경우 (음수)
         if (change < 0)
         {
-            //animationHandler.Damage(); // 맞는 애니메이션 실행
+            //Player.Damage(); // 맞는 애니메이션 실행
         }
 
         // 체력이 0 이하가 되면 사망 처리
@@ -76,7 +78,7 @@ public class ResourceController : MonoBehaviour
     private void Death()
     {
 
-        //GameManagerDependencyInfo.GameOver();
+        GameManager.instance.GameOver();
     }
 
 }

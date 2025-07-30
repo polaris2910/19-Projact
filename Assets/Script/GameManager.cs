@@ -11,4 +11,10 @@ public class GameManager : MonoBehaviour
         // 싱글톤 할당
         instance = this;
     }
+
+    public void GameOver()
+    {
+        //사망 애니메이션 메소드 출력
+        Debug.Log("사-망");
+    }
 }

@@ -15,8 +15,9 @@ public class Player : MonoBehaviour
 
     private int jumpCount = 0;
     private int maxjumpCount = 2;
-    
-     void Start()
+
+    private bool wasGrounded = false;
+    void Start()
      {
      //gameManager = GameManager.Instance; 추후 추가
      _animator = GetComponentInChildren<Animator>();
@@ -33,12 +34,15 @@ public class Player : MonoBehaviour
      void Update()
     {
         // 바닥에 닿아있다면 점프 카운트 초기화
-        if (IsGrounded())
+        bool grounded = IsGrounded();
+
+        // "착지" 순간에만 점프카운트 초기화
+        if (grounded && !wasGrounded)
         {
             jumpCount = 0;
         }
+        wasGrounded = grounded;
 
-        // 점프 입력 처리
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxjumpCount)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
@@ -46,14 +50,16 @@ public class Player : MonoBehaviour
 
             if (_animator != null)
                 _animator.SetTrigger("Jump");
-        }
 
+            AudioManager.instance.PlayJumpSound();
+            
+        }
     }
     bool IsGrounded()
      {
-        if (groundCheck == null) return false;
+        if (transform == null) return false;
 
-        Collider2D collider = Physics2D.OverlapCircle(transform.position, 0.1f, groundLayer);
+        Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return collider != null;
      }
 

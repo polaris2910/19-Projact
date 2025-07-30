@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BGloop : MonoBehaviour
 {
-    public float scrollSpeed = 6f;
-    public float resetPosition = -32.256f;
-    public float startPosition = 32.256f;
+    float scrollSpeed = 6f;
+    private float resetPosition = -32f;
+    private float startPosition = 32f;
    
 
     // Update is called once per frame

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
@@ -16,14 +17,16 @@ public class ResourceManager : MonoBehaviour
 
     private float timeSinceLastChange = float.MaxValue; // 마지막 체력 변경 이후 경과 시간
 
-    [field: SerializeField] public float CurrentHealth { get; private set; } // 현재 체력 (외부 접근만 허용)
+    public float CurrentHealth { get; private set; } // 현재 체력 (외부 접근만 허용)
     public float MaxHealth => resourceFactory.Health; // 최대 체력은 가져옴
 
     [field: SerializeField] public float Speed { get; private set; } = 6f;//이 부분 팩토리랑 연결 나중에 해주세요
 
     public int Score {  get; private set; } //이 부분도 팩토리랑 연결해주세요
 
-    [field: SerializeField] public float ObjectSpawnInterval { get; private set; } = 3f;
+    [field:SerializeField] public float ObjectSpawnInterval { get; private set; } = 3f;
+
+    private float previousSpeed;
     private void Awake()
     {
         if(Instance == null)
@@ -84,18 +87,31 @@ public class ResourceManager : MonoBehaviour
     }
     public void ChangeSpeed(float speed)
     {
+        previousSpeed = Speed;
         Speed += speed;
-        Debug.Log("속도업");
-        //속도 증가
+        
+       
         ChangeObjectSpawnInterval(Speed);
     }
 
     void ChangeObjectSpawnInterval(float speed)
     {
         Debug.Log($"스폰 수치변화 , 현재 스피드{speed}");
-        ObjectSpawnInterval = ObjectSpawnInterval*(6f/speed);
-        
-        
+        ObjectSpawnInterval = ObjectSpawnInterval*(previousSpeed/speed);
+   
+    }
+    public void ReduceSpeedStart(float speed)
+    {
+        StartCoroutine(ReduceSpeed(speed));
+    }
+
+
+    private IEnumerator ReduceSpeed(float speed)
+    {
+        Debug.Log("속도감소코루틴");
+        yield return new WaitForSeconds(10f);
+        Debug.Log("속도감소");
+        ChangeSpeed(-speed);
     }
 
     public void ChangeScore(int score)

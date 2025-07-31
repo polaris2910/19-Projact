@@ -1038,7 +1038,6 @@ GameObject:
   m_Component:
   - component: {fileID: 326853373}
   - component: {fileID: 326853375}
-  - component: {fileID: 326853374}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -1068,20 +1067,6 @@ RectTransform:
   m_AnchoredPosition: {x: -315, y: 230}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &326853374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326853372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc83ca1592ef6f4c968768b2a82ae1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 326853375}
-  resourceManager: {fileID: 55522991}
 --- !u!114 &326853375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5211,8 +5196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc83ca1592ef6f4c968768b2a82ae1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  resourceManager: {fileID: 0}
+  healthBar: {fileID: 326853375}
+  resourceManager: {fileID: 55522991}
 --- !u!1 &1964920514
 GameObject:
   m_ObjectHideFlags: 0

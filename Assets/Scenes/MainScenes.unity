@@ -376,7 +376,6 @@ MonoBehaviour:
   player: {fileID: 55522989}
   achievements: {fileID: 55522993}
   healthChangeDelay: 3
-  <CurrentHealth>k__BackingField: 0
   <Speed>k__BackingField: 6
   <ObjectSpawnInterval>k__BackingField: 3
 --- !u!114 &55522992
@@ -5519,6 +5518,7 @@ MonoBehaviour:
   healthBar: {fileID: 326853375}
   resourceManager: {fileID: 55522991}
   gameOver: {fileID: 1406188211}
+  startUI: {fileID: 0}
 --- !u!1 &1964920514
 GameObject:
   m_ObjectHideFlags: 0

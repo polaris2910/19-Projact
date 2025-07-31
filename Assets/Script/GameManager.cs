@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
 
+    public void StartGame()
+    {
+        Debug.Log("게임 시작!");
+    }
     private void Awake()
     {
         if (Instance == null)

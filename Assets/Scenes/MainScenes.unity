@@ -374,6 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 55522989}
   healthChangeDelay: 3
+  <CurrentHealth>k__BackingField: 0
 --- !u!114 &55522992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +615,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthItem: {fileID: 5408318316650060951, guid: 325b7a05d57ff414780531167f1e8590, type: 3}
   speedUpItem: {fileID: 5771228262204452101, guid: f50d42ae30177ef4bbbcc2a686353c51, type: 3}
+  purpleGem: {fileID: 7872602134052685762, guid: 81c122003d7d54446a07f6cc026364f0, type: 3}
+  greenGem: {fileID: 7872602134052685762, guid: 162e7b9ac4093a741a74d42e120b61b3, type: 3}
+  goldGem: {fileID: 7872602134052685762, guid: a1a171c835681ec4fb489a723a5bf1d8, type: 3}
 --- !u!1 &229216804
 GameObject:
   m_ObjectHideFlags: 0

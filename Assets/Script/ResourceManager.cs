@@ -12,7 +12,6 @@ public class ResourceManager : MonoBehaviour
     public bool TookDamageDuringRun { get; private set; }
 
     private ResourceFactory resourceFactory;
-    //private StatHandler statHandler;
     //private AnimationHandler animationHandler;
 
     private float timeSinceLastChange = float.MaxValue; // 마지막 체력 변경 이후 경과 시간
@@ -34,7 +33,7 @@ public class ResourceManager : MonoBehaviour
         
         resourceFactory = GetComponent<ResourceFactory>();
         //animationHandler = GetComponent<>();
-        //baseController = GetComponent<>();
+        
     }
 
     private void Start()
@@ -108,8 +107,7 @@ public class ResourceManager : MonoBehaviour
 
     private void Death()
     {
-
-        GameManager.instance.GameOver();
+        GameManager.Instance.GameOver();
     }
 
     public void ResetDamageRecord()

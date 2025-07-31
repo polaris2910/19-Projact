@@ -1,20 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
+    
 
     private void Awake()
     {
-        // 싱글톤 할당
-        instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // 중복 방지
+            return;
+        }
     }
-
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void GameOver()
     {
-        //사망 애니메이션 메소드 출력
+        Time.timeScale = 0f;
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowGameOverUI();
+        }
         Debug.Log("사-망");
     }
 }

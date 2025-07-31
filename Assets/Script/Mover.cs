@@ -3,27 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Mover : MonoBehaviour
+public class Mover : BaseMover
 {
-    float movingSpeed => ResourceManager.Instance.Speed;
-    
-
-    // Update is called once per frame
-
-
-    void Update()
+    protected override void Update()
     {
-        Move();
+        base.Update();
     }
 
-
-    void Move()
-    {
-
-        transform.Translate(Vector3.left*movingSpeed*Time.deltaTime);
-    }
-
-    
 }
 
 

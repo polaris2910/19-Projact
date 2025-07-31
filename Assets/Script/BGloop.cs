@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BGloop : MonoBehaviour
+public class BGloop : BaseMover
 {
-    float scrollSpeed = 6f;
+    
     private float resetPosition = -32f;
     private float startPosition = 32f;
    
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        transform.Translate(Vector3.left * scrollSpeed * Time.deltaTime);//이동속도
+        base.Update();
 
         if (transform.position.x <= resetPosition)//리셋 포지션도달시
         {

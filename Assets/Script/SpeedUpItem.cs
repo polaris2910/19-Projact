@@ -11,9 +11,11 @@ public class SpeedUpItem : MonoBehaviour,IConsumable
     {
         _resourceManager = resourceManager;
         _resourceManager.ChangeSpeed(speedIncrease);
+        _resourceManager.ReduceSpeedStart(speedIncrease);
         gameObject.SetActive(false);
         
+        
     }
-
+   
     
 }

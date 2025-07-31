@@ -3,34 +3,40 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEngine;
 
-public class ScoreController : MonoBehaviour
+public class ScoreController : MonoBehaviour,IConsumable
 {
-    public GameManager score;
-    void OnTriggerEnter2D(Collider2D collision)
+    ResourceManager _resourceManager;
+    [SerializeField] GemType gemType;
+    
+    public void Eat(ResourceManager resourceManager)
     {
-
-        if (collision.gameObject.tag == "Gem")
-        { }
-        bool isBlue = collision.gameObject.name.Contains("Blue");
-        bool isGreen = collision.gameObject.name.Contains("Green");
-        bool isGold = collision.gameObject.name.Contains("Gold");
-
-        if (isBlue)
-        {
-            //score.stagePoint += 100; 점수 도입 시 활성화
-        }
-        if (isGreen)
-        {
-            //score.stagePoint += 200; 점수 도입 시 활성화
-        }
-        if (isGold)
-        {
-            //score.stagePoint += 300; 점수 도입 시 활성화
-        }
-
-        collision.gameObject.SetActive(false);
+        _resourceManager = resourceManager;
+        GemScore();
+        gameObject.SetActive(false);
     }
 
+    void GemScore()
+    {
+        if (gemType == GemType.Purple)
+        {
+            _resourceManager.ChangeScore(100);
+        }
+        else if (gemType == GemType.Green) 
+        {
+            _resourceManager.ChangeScore(200);
+        }
+        else
+        {
+            _resourceManager.ChangeScore(500);
+        }
 
-    
+        
+    }
+
+}  
+enum GemType
+{
+    Purple,
+    Green,
+    Gold
 }

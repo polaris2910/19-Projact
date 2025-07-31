@@ -17,8 +17,8 @@ public class ObstacleController : MonoBehaviour
     Vector3 UpSpawnPosition= new Vector3(13f, 5f, 0f);
 
 
+    public List<int> objectSpawnData; 
 
-    public List<int> objectSpawnData = new List<int> { 1,0,0,3,2,0, 1, 2, 0, 3,3, 0, 2, 0, 2, 1,1,1,1,1,2,0,0,0,3,0,1,1,3,2,1,1,1,1,1,1,2,1,1,1,1,1 };
     Queue<GameObject> objectPool_1 = new Queue<GameObject>();
     Queue<GameObject> objectPool_2 = new Queue<GameObject>();
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
@@ -26,20 +26,14 @@ public class ObstacleController : MonoBehaviour
 
     private void Start()
     {
+        objectSpawnData = new List<int> { 4, 4, 1, 0, 0, 4, 3, 4, 2, 0, 1, 2, 0, 3, 3, 0, 2, 4, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 0, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 };
         cherryController = GetComponent<CherryController>();
         itemController = GetComponent<ItemController>();
+        StartCoroutine(SetObstacles());
     }
 
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartCoroutine(SetObstacles());
-        }
-
-
-    }
+    
 
     IEnumerator SetObstacles()
     {
@@ -60,9 +54,9 @@ public class ObstacleController : MonoBehaviour
 
     public void SetType(int type)
     {
-        if (type == 0)
+        if (type == 0 )
         {
-            Debug.Log("타입 0");
+            
         }
         else if (type == 1)
         {
@@ -74,9 +68,13 @@ public class ObstacleController : MonoBehaviour
         {
             SpawnObstacles(objectPool_2,  bigDownObstaclePrefab);
         }
-        else
+        else if(type == 3) 
         {
             SpawnObstacles(objectPool_3, bigUpObstaclePrefab);
+        }
+        else
+        {
+            
         }
 
     }
@@ -126,7 +124,7 @@ public class ObstacleController : MonoBehaviour
         
         queue.Enqueue(obj);
         obj.SetActive(false);
-        Debug.Log("풀에돌아감");
+        
 
     }
 

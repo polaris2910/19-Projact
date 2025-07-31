@@ -10,7 +10,7 @@ public class ResourceManager : MonoBehaviour
     public Player player;
     public Achievements achievements;
 
-    [SerializeField] private float healthChangeDelay = 1f; // 피해 후 무적 지속 시간
+    [SerializeField] private float healthChangeDelay = 1.5f; // 피해 후 무적 지속 시간
     public bool TookDamageDuringRun { get; private set; }
 
     private ResourceFactory resourceFactory;
@@ -28,6 +28,10 @@ public class ResourceManager : MonoBehaviour
     [field:SerializeField] public float ObjectSpawnInterval { get; private set; } = 3f;
 
     private float previousSpeed;
+
+    public SpriteRenderer spriteRenderer; // [추가] Inspector에서 Player의 SpriteRenderer를 연결
+    private Coroutine _blinkCoroutine;    // [추가] 깜빡임 코루틴 핸들러
+    public bool IsInvincible => timeSinceLastChange < healthChangeDelay; // [추가] 무적 프로퍼티
     private void Awake()
     {
         if(Instance == null)
@@ -56,6 +60,7 @@ public class ResourceManager : MonoBehaviour
             if (timeSinceLastChange >= healthChangeDelay)
             {
                 //animationHandler.InvincibilityEnd();
+                StopBlink();
             }
         }
     }
@@ -73,11 +78,11 @@ public class ResourceManager : MonoBehaviour
         CurrentHealth += change;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0f, MaxHealth);
 
-        if (change < 0f)
+        if ((change < 0f && CurrentHealth > 0f && (CurrentHealth + change < CurrentHealth)))
         {
             TookDamageDuringRun = true; // 피해 발생 기록
             achievements.ResetObstacleCount();
-
+            StartBlink();
         }
 
         if (CurrentHealth <= 0f)
@@ -86,6 +91,43 @@ public class ResourceManager : MonoBehaviour
         }
 
         return true;
+    }
+    private void StartBlink()
+    {
+        Debug.Log("블링크 시작"); 
+        if (_blinkCoroutine != null)
+            StopCoroutine(_blinkCoroutine);                  //이전에 돌고 있던 블링크 코루틴이 있다면 중단
+        _blinkCoroutine = StartCoroutine(BlinkCoroutine());  //실제 깜빡임을 연출하는 코루틴 시작, 핸들러에 저장(중복 방지)
+    }
+
+    private void StopBlink()
+    {
+        
+        if (_blinkCoroutine != null)
+        {
+            StopCoroutine(_blinkCoroutine);  // 현재 실행 중인 블링크 코루틴이 있으면 중단
+            _blinkCoroutine = null;          // 핸들러를 null로 리셋 (코루틴 상태 초기화)
+        }
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = true;   // 캐릭터가 완전히 보이도록 원상복구
+        Debug.Log("블링크 종료");            
+    }
+
+    private IEnumerator BlinkCoroutine()
+    {
+        float blinkInterval = 0.15f;
+        while (IsInvincible)            // 무적 상태가 유지되는 동안 반복
+        {
+            if (spriteRenderer != null)
+                spriteRenderer.enabled = !spriteRenderer.enabled;   // 보임/숨김 반복
+            yield return new WaitForSeconds(blinkInterval);         // 대기 후 다시 반복
+        }
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = true;
+    }
+    public void ResetDamageRecord()
+    {
+        TookDamageDuringRun = false;
     }
     public void ChangeSpeed(float speed)
     {
@@ -128,9 +170,6 @@ public class ResourceManager : MonoBehaviour
         GameManager.Instance.GameOver();
     }
 
-    public void ResetDamageRecord()
-    {
-        TookDamageDuringRun = false;
-    }
+    
 
 }

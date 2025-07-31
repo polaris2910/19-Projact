@@ -34,7 +34,7 @@ public class Achievements : MonoBehaviour
     public void ResetObstacleCount()
     {
         obstacleCount = 0;
-        Debug.Log(" 장애물 카운트0");
+        Debug.Log($"{obstacleCount}");
     }
     private void TriggerPerfectRun()
     {

@@ -15,14 +15,18 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
 
-
+    [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject ScoreUI;
     private StartUI startUIScreen;
+<<<<<<< HEAD
 
     private UIState currentState; // 이거 추가!
+=======
+    private bool isSettingsOpen = false;
+>>>>>>> 868fe12ece764d0c1d48591c97e8a9f23086b4d9
     private void Awake()
     {
         if (Instance == null)
@@ -44,7 +48,27 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
+<<<<<<< HEAD
         HealthBarUpdate();
+=======
+        float ratio = resourceManager.CurrentHealth;
+        healthBar.value = ratio;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isSettingsOpen = !isSettingsOpen;
+            settingsPanel.SetActive(isSettingsOpen);
+            PauseGame(isSettingsOpen);
+        }
+    }
+    void PauseGame(bool pause)
+    {
+        Time.timeScale = pause ? 0f : 1f;
+    }
+    public void ShowGameOverUI()
+    {
+        gameOver.SetActive(true);
+>>>>>>> 868fe12ece764d0c1d48591c97e8a9f23086b4d9
     }
 
     private void HealthBarUpdate()

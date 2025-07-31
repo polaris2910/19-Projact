@@ -10,10 +10,22 @@ public class BGMmanager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        audioSource = GetComponent<AudioSource>(); // 같은 GameObject 안의 AudioSource
+        audioSource = GetComponent<AudioSource>();
+
+        // 저장된 볼륨이 있다면 불러와서 적용
+        if (PlayerPrefs.HasKey("BGMVolume"))
+        {
+            float savedVolume = PlayerPrefs.GetFloat("BGMVolume");
+            audioSource.volume = savedVolume;
+        }
     }
+
     public void SetVolume(float value)
     {
         audioSource.volume = value;
+
+        // 볼륨 저장
+        PlayerPrefs.SetFloat("BGMVolume", value);
+        PlayerPrefs.Save();
     }
 }

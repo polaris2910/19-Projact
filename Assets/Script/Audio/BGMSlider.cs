@@ -10,6 +10,15 @@ public class BGMSlider : MonoBehaviour
     void Start()
     {
 
+        if (PlayerPrefs.HasKey("BGMVolume"))
+        {
+            bgmSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+        }
+        else
+        {
+            bgmSlider.value = 1f; // 기본값 설정 (필요 시 조정)
+        }
+
         bgmSlider.onValueChanged.AddListener(SetVolume);
     }
 

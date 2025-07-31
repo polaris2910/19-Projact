@@ -21,12 +21,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject ScoreUI;
     private StartUI startUIScreen;
-<<<<<<< HEAD
+
 
     private UIState currentState; // 이거 추가!
-=======
+
     private bool isSettingsOpen = false;
->>>>>>> 868fe12ece764d0c1d48591c97e8a9f23086b4d9
+
     private void Awake()
     {
         if (Instance == null)
@@ -48,10 +48,10 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-<<<<<<< HEAD
+
         HealthBarUpdate();
-=======
-        float ratio = resourceManager.CurrentHealth;
+
+        float ratio = ResourceManager.Instance.CurrentHealth;
         healthBar.value = ratio;
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -67,8 +67,7 @@ public class UIManager : MonoBehaviour
     }
     public void ShowGameOverUI()
     {
-        gameOver.SetActive(true);
->>>>>>> 868fe12ece764d0c1d48591c97e8a9f23086b4d9
+    //    gameOver.SetActive(true);
     }
 
     private void HealthBarUpdate()

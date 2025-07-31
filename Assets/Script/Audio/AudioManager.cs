@@ -16,6 +16,11 @@ public class AudioManager : MonoBehaviour
     {
         instance = this;
         audioSource = GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            float savedVolume = PlayerPrefs.GetFloat("Volume");
+            audioSource.volume = savedVolume;
+        }
     }
     public void PlaySound(AudioClip clip)
     {
@@ -27,6 +32,15 @@ public class AudioManager : MonoBehaviour
     {
         Debug.Log("Jump sound played: " + jumpSound?.name);
         PlaySound(jumpSound);
+    }
+
+    public void SetVolume(float value)
+    {
+        audioSource.volume = value;
+
+        // º¼·ý ÀúÀå
+        PlayerPrefs.SetFloat("Volume", value);
+        PlayerPrefs.Save();
     }
 
     public void PlayHurtSound()

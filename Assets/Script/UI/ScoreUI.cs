@@ -2,13 +2,17 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class ScoreUI : MonoBehaviour
+public class ScoreUI : BaseUI
 {
     [SerializeField] private TMP_Text scoreText;
-    [SerializeField] private ResourceManager resourceManager;
+
+    protected override UIState GetUIState()
+    {
+        return UIState.Score;
+    }
 
     private void Update()
     {
-        scoreText.text = resourceManager.Score.ToString();
+        scoreText.text = ResourceManager.Instance.Score.ToString();
     }
 }

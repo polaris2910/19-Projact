@@ -7,18 +7,26 @@ public enum UIState
 {
     Start,
     Exit,
+    Score,
+    GameOver
 }
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
 
-
+    [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider healthBar;
-    [SerializeField] private ResourceManager resourceManager;
-    [SerializeField] private GameObject gameOver;
-    private GameObject startUI;
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject startUI;
+    [SerializeField] private GameObject ScoreUI;
     private StartUI startUIScreen;
+
+
+    private UIState currentState; // 이거 추가!
+
+    private bool isSettingsOpen = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -32,24 +40,59 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        startUIScreen = startUI.GetComponent<StartUI>();
+        startUIScreen = GetComponentInChildren<StartUI>();
         if (startUIScreen != null)
             startUIScreen.Init(this);
 
-        ShowStartUI();
+        ChangeState(UIState.Start); //이거 바꿈
     }
     private void Update()
     {
-        float ratio = resourceManager.CurrentHealth;
+
+        HealthBarUpdate();
+
+        float ratio = ResourceManager.Instance.CurrentHealth;
         healthBar.value = ratio;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isSettingsOpen = !isSettingsOpen;
+            settingsPanel.SetActive(isSettingsOpen);
+            PauseGame(isSettingsOpen);
+        }
+    }
+    void PauseGame(bool pause)
+    {
+        Time.timeScale = pause ? 0f : 1f;
     }
     public void ShowGameOverUI()
     {
-        gameOver.SetActive(true);
+    //    gameOver.SetActive(true);
     }
 
-    public void ShowStartUI()
+    private void HealthBarUpdate()
     {
-        startUI.SetActive(true);
+        float ratio = ResourceManager.Instance.CurrentHealth;
+        healthBar.value = ratio;
     }
+    
+    //public void ShowGameOverUI()
+    //{
+    //    gameOverUI.SetActive(true);
+    //}
+
+    //public void ShowStartUI()
+    //{
+    //    startUI.SetActive(true);
+    //}
+    public void ChangeState(UIState state) //이거 추가!!
+    {
+        currentState = state;
+
+        startUI.SetActive(currentState == UIState.Start);
+        gameOverUI.SetActive(currentState==UIState.GameOver);
+        ScoreUI.SetActive(currentState==UIState.Score);
+
+    }
+
 }

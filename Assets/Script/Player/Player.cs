@@ -92,6 +92,16 @@ public class Player : MonoBehaviour
     {
         IConsumable consumable = collision.gameObject.GetComponent<IConsumable>();
         consumable?.Eat(_resourceManager);
+
+        // 장애물 태그 처리
+        if (collision.CompareTag("Obstacle"))
+        {
+            if (_resourceManager != null && _resourceManager.ChangeHealth(-1f)) // 바로 체력 변경 시도
+            {
+                TakeDamage(); // 피격 애니메이션
+                AudioManager.instance.PlayHurtSound(); // 사운드 등 추가 처리 가능
+            }
+        }
     }
     
 }

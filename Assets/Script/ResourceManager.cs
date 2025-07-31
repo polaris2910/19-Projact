@@ -7,8 +7,9 @@ public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager Instance;
     public Player player;
+    public Achievements achievements;
 
-    [SerializeField] private float healthChangeDelay = 3f; // 피해 후 무적 지속 시간
+    [SerializeField] private float healthChangeDelay = 1f; // 피해 후 무적 지속 시간
     public bool TookDamageDuringRun { get; private set; }
 
     private ResourceFactory resourceFactory;
@@ -72,7 +73,8 @@ public class ResourceManager : MonoBehaviour
         if (change < 0f)
         {
             TookDamageDuringRun = true; // 피해 발생 기록
-             //Player.Damage(); 
+            achievements.ResetObstacleCount();
+
         }
 
         if (CurrentHealth <= 0f)

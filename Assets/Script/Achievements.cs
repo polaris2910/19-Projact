@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Resources;
 using UnityEngine;
 
 public class Achievements : MonoBehaviour
@@ -34,7 +31,11 @@ public class Achievements : MonoBehaviour
             }
         }
     }
-
+    public void ResetObstacleCount()
+    {
+        obstacleCount = 0;
+        Debug.Log(" 장애물 카운트0");
+    }
     private void TriggerPerfectRun()
     {
         Debug.Log("피해 없이 장애물 10개 돌파!");

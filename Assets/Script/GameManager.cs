@@ -1,20 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
+    
 
     private void Awake()
     {
         // ΩÃ±€≈Ê «“¥Á
-        instance = this;
+        Instance = this;
     }
-
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void GameOver()
     {
-        //ªÁ∏¡ æ÷¥œ∏ﬁ¿Ãº« ∏ﬁº“µÂ √‚∑¬
+        Time.timeScale = 0f;
+        UIManager.Instance.ShowGameOverUI();
         Debug.Log("ªÁ-∏¡");
     }
 }

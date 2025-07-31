@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private ResourceManager resourceManager;
     [SerializeField] private GameObject gameOver;
-    [SerializeField] private GameObject startUI;
+    private GameObject startUI;
     private StartUI startUIScreen;
     private void Awake()
     {

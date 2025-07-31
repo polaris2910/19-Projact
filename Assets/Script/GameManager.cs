@@ -10,8 +10,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // ΩÃ±€≈Ê «“¥Á
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // ¡ﬂ∫π πÊ¡ˆ
+            return;
+        }
     }
     public void RestartGame()
     {
@@ -21,7 +28,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0f;
-        UIManager.Instance.ShowGameOverUI();
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowGameOverUI();
+        }
         Debug.Log("ªÁ-∏¡");
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEngine;
 
-public class ScoreController : MonoBehaviour,IConsumable
+public class GemItems : MonoBehaviour,IConsumable
 {
     ResourceManager _resourceManager;
     [SerializeField] GemType gemType;

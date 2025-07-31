@@ -17,8 +17,8 @@ public class ObstacleController : MonoBehaviour
     Vector3 UpSpawnPosition= new Vector3(13f, 5f, 0f);
 
 
+    public List<int> objectSpawnData; 
 
-    public List<int> objectSpawnData = new List<int> { 1,0,0,3,2,0, 1, 2, 0, 3,3, 0, 2, 0, 2, 1,1,1,1,1,2,0,0,0,3,0,1,1,3,2,1,1,1,1,1,1,2,1,1,1,1,1 };
     Queue<GameObject> objectPool_1 = new Queue<GameObject>();
     Queue<GameObject> objectPool_2 = new Queue<GameObject>();
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
@@ -26,20 +26,14 @@ public class ObstacleController : MonoBehaviour
 
     private void Start()
     {
+        objectSpawnData = new List<int> { 4, 4, 1, 0, 0, 4, 3, 4, 2, 0, 1, 2, 0, 3, 3, 0, 2, 4, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 0, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 };
         cherryController = GetComponent<CherryController>();
         itemController = GetComponent<ItemController>();
+        StartCoroutine(SetObstacles());
     }
 
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartCoroutine(SetObstacles());
-        }
-
-
-    }
+    
 
     IEnumerator SetObstacles()
     {
@@ -60,65 +54,52 @@ public class ObstacleController : MonoBehaviour
 
     public void SetType(int type)
     {
-        if (type == 0)
+        if (type == 0 )
         {
-            Debug.Log("타입 0");
+            
         }
         else if (type == 1)
         {
             
-            SpawnObstacles(objectPool_1,smallDownObstaclePrefab);
+            SpawnObstacles(objectPool_1,smallDownObstaclePrefab,DownSpawnPosition);
             
         }
         else if (type == 2)
         {
-            SpawnObstacles(objectPool_2,  bigDownObstaclePrefab);
+            SpawnObstacles(objectPool_2,  bigDownObstaclePrefab, DownSpawnPosition);
+        }
+        else if(type == 3) 
+        {
+            SpawnObstacles(objectPool_3, bigUpObstaclePrefab,UpSpawnPosition);
         }
         else
         {
-            SpawnObstacles(objectPool_3, bigUpObstaclePrefab);
+            
         }
 
     }
-    void SpawnObstacles(Queue<GameObject> queue,GameObject prefab)
+    void SpawnObstacles(Queue<GameObject> queue,GameObject prefab,Vector3 spawnPosition)
     {
         GameObject obj = null;
-        if (queue==objectPool_1 || queue==objectPool_2)
+        if (queue.Count > 0)
         {
-            
-            if (queue.Count > 0)
-            {
-                
-                obj = queue.Dequeue();
-                obj.transform.position = DownSpawnPosition;
-                obj.SetActive(true);
-                
 
-            }
-            else
-            {
-                obj=Instantiate(prefab, DownSpawnPosition, Quaternion.identity);
-                
-            }
-            StartCoroutine(ReturnToPool(queue, obj));
+            obj = queue.Dequeue();
+            obj.transform.position = spawnPosition;
+            obj.SetActive(true);
+
+
         }
-        else if(queue==objectPool_3 )
+        else
         {
-            if (queue.Count > 0)
-            {
-                
-                obj = queue.Dequeue();
-                obj.transform.position = UpSpawnPosition;
-                obj.SetActive(true);
-                
-            }
-            else
-            {
-                obj=Instantiate(prefab, UpSpawnPosition,Quaternion.identity);
-                
-            }
-            StartCoroutine(ReturnToPool(queue, obj));
+            obj = Instantiate(prefab, spawnPosition, Quaternion.identity);
+
         }
+        StartCoroutine(ReturnToPool(queue, obj));
+
+
+
+
     }
     IEnumerator ReturnToPool(Queue<GameObject> queue,GameObject obj)
     {
@@ -126,7 +107,7 @@ public class ObstacleController : MonoBehaviour
         
         queue.Enqueue(obj);
         obj.SetActive(false);
-        Debug.Log("풀에돌아감");
+        
 
     }
 

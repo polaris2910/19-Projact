@@ -73,7 +73,7 @@ public class ResourceManager : MonoBehaviour
         CurrentHealth += change;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0f, MaxHealth);
 
-        if (change < 0f)
+        if ((change < 0f && CurrentHealth > 0f && (CurrentHealth + change < CurrentHealth)))
         {
             TookDamageDuringRun = true; // 피해 발생 기록
             achievements.ResetObstacleCount();
@@ -86,6 +86,10 @@ public class ResourceManager : MonoBehaviour
         }
 
         return true;
+    }
+    public void ResetDamageRecord()
+    {
+        TookDamageDuringRun = false;
     }
     public void ChangeSpeed(float speed)
     {
@@ -128,9 +132,6 @@ public class ResourceManager : MonoBehaviour
         GameManager.Instance.GameOver();
     }
 
-    public void ResetDamageRecord()
-    {
-        TookDamageDuringRun = false;
-    }
+    
 
 }

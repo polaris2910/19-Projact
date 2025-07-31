@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         if (UIManager.Instance != null)
         {
-            UIManager.Instance.ShowGameOverUI();
+            UIManager.Instance.ChangeState(UIState.GameOver);
         }
         Debug.Log("»ç-¸Á");
     }

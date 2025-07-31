@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TilemapScroller : MonoBehaviour
+public class TilemapScroller : Mover
 {
-    private float scrollSpeed = 6f;
+    
     private float resetPosition = -45f;
     private float startPosition = 45f;
 
-    void Update()
+    protected override void Update()
     {
-        transform.Translate(Vector3.left * scrollSpeed * Time.deltaTime);
-
+        
+        base.Update();
         if (transform.position.x <= resetPosition)
         {
             Vector3 newPos = transform.position;

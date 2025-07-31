@@ -7,14 +7,14 @@ public class Player : MonoBehaviour
     {
     public float jumpForce = 5f;
 
-    public Transform groundCheck;
+    public Transform groundCheck; //바닥 체크용
     public LayerMask groundLayer; 
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
 
     private int jumpCount = 0;
-    private int maxjumpCount = 2;
+    private int maxJumpCount = 2;
     ResourceManager _resourceManager;
 
     private bool wasGrounded = false;
@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
      //gameManager = GameManager.Instance; 추후 추가
      _animator = GetComponentInChildren<Animator>();
      _rigidbody = GetComponent<Rigidbody2D>(); 
-     _animator = GetComponent<Animator>();
      _resourceManager = GetComponent<ResourceManager>();
 
         if (_rigidbody == null)
@@ -33,75 +32,79 @@ public class Player : MonoBehaviour
              Debug.LogError("Animator not found!");
      }
 
-     void Update()
+    void Update()
     {
-        // 바닥에 닿아있다면 점프 카운트 초기화
-       bool grounded = IsGrounded();
-       float yVelocity = _rigidbody.velocity.y;
+        HandleGroundCheck(); // 바닥 체크 및 점프 카운트 리셋
+        HandleJump();        // 점프 입력 처리
+        HandleFalling();     // 낙하/공중 상태 애니메이션 처리
+        HandleSlide();       // 슬라이드 입력 및 애니메이션 처리
+    }
 
-        // "착지" 순간에만 점프카운트 초기화
+    void HandleGroundCheck() 
+    {
+        bool grounded = IsGrounded();
         if (grounded && !wasGrounded)
-        {
             jumpCount = 0;
-        }
-        wasGrounded = grounded;
+        wasGrounded = grounded; // 이전 상태 기록
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxjumpCount)
+    void HandleJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumpCount) 
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
             jumpCount++;
 
-            if (_animator != null)
-                _animator.SetTrigger("Jump");
-       
-            AudioManager.instance.PlayJumpSound();     
+            _animator?.SetTrigger("Jump");          // 점프 애니메이션 재생
+            AudioManager.instance?.PlayJumpSound(); // 점프 사운드 재생
         }
-
-        //y속도가 음수일때 isfalling -> true
-        if (!grounded && yVelocity < -0.1f)
-        {
-            _animator.SetBool("isFalling", true);
-            _animator.ResetTrigger("Jump");
-        }
-        else
-        {
-            _animator.SetBool("isFalling", false);
-        }
-
-        //슬라이드
-        bool isSliding = Input.GetKey(KeyCode.DownArrow);// 땅 위에서만 슬라이드
-        if (_animator != null)
-            _animator.SetBool("isSliding", isSliding);
     }
-    bool IsGrounded()
-     {
-        if (transform == null) return false;
 
+    void HandleFalling() 
+    {
+        float yVelocity = _rigidbody.velocity.y;
+        bool grounded = IsGrounded();
+
+        bool isFalling = !grounded && yVelocity < -0.1f;
+        _animator?.SetBool("isFalling", isFalling); // 낙하 애니메이션 트리거
+        if (isFalling)
+            _animator?.ResetTrigger("Jump");        // 점프 트리거 초기화(낙하시)
+    }
+
+    void HandleSlide() 
+    {
+        bool isSliding = Input.GetKey(KeyCode.DownArrow); // 아래키 입력시 슬라이드
+        _animator?.SetBool("isSliding", isSliding);       // 슬라이드 애니메이션
+    }
+
+    bool IsGrounded()
+    {
+        if (groundCheck == null) return false;
         Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return collider != null;
-     }
+    }
 
-    public void TakeDamage()    //피격 애니메이션
+    public void TakeDamage()
     {
-        if (_animator != null)
-            _animator.SetTrigger("Hurt");
-
+        _animator?.SetTrigger("Hurt");
+        AudioManager.instance?.PlayHurtSound();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IConsumable consumable = collision.gameObject.GetComponent<IConsumable>();
-        consumable?.Eat(_resourceManager);
+        bool isObstacle = collision.CompareTag("Obstacle") ||
+                     collision.gameObject.layer == LayerMask.NameToLayer("Obstacle");
 
-        // 장애물 태그 처리
-        if (collision.CompareTag("Obstacle"))
+        if (isObstacle)
         {
-            if (_resourceManager != null && _resourceManager.ChangeHealth(-1f)) // 바로 체력 변경 시도
+            //  ResourceManager에서 무적+체력+블링크 설정
+            if (_resourceManager != null && _resourceManager.ChangeHealth(-1f))
             {
-                TakeDamage(); // 피격 애니메이션
-                AudioManager.instance.PlayHurtSound(); // 사운드 등 추가 처리 가능
+                TakeDamage();     
             }
         }
+
+        IConsumable consumable = collision.gameObject.GetComponent<IConsumable>();
+        consumable?.Eat(_resourceManager);
     }
-    
 }

@@ -35,7 +35,7 @@ public class ItemController : MonoBehaviour
         
         if(type == 4)
         {
-            Debug.Log("4번");
+            
             if (itemsDictionary.TryGetValue(ramdomNum, out GameObject item))
             {
                 
@@ -46,8 +46,10 @@ public class ItemController : MonoBehaviour
     }
     private void SpawnItem(GameObject item)
     {
-        Debug.Log("아이템 소환");
-        Instantiate(item,ItemSpawnPosition, Quaternion.identity);
+        GameObject obj= Instantiate(item, ItemSpawnPosition, Quaternion.identity);
+        Destroy(obj,10f);
     }
+
+    
 
 }

@@ -16,11 +16,10 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
 
-    //[SerializeField] private GameObject settingsPanel;
+   
     [SerializeField] private Slider healthBar;
     
-    //[SerializeField] private GameObject gameOverUI;
-    //[SerializeField] private GameObject startUI;
+   
     
     private ScoreUI scoreUI;
     private StartUI startUI;

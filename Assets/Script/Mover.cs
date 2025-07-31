@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Obstacles : MonoBehaviour
+public class Mover : MonoBehaviour
 {
-
-    float movingSpeed = 6f;
+    float movingSpeed => ResourceManager.Instance.Speed;
     
+
     // Update is called once per frame
 
-    
+
     void Update()
     {
         Move();

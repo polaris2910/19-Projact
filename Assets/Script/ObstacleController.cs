@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
-
+    
 
     CherryController cherryController;
     ItemController itemController;
@@ -12,7 +12,7 @@ public class ObstacleController : MonoBehaviour
     [SerializeField] GameObject bigDownObstaclePrefab;
     [SerializeField] GameObject bigUpObstaclePrefab;
 
-    float obstacleInterval = 3f;
+    float obstacleInterval=> ResourceManager.Instance.ObjectSpawnInterval;
     Vector3 DownSpawnPosition = new Vector3(13f, -2.1f, 0f);
     Vector3 UpSpawnPosition= new Vector3(13f, 5f, 0f);
 
@@ -26,7 +26,8 @@ public class ObstacleController : MonoBehaviour
 
     private void Start()
     {
-        objectSpawnData = new List<int> { 4, 4, 1, 0, 0, 4, 3, 4, 2, 0, 1, 2, 0, 3, 3, 0, 2, 4, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 0, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 };
+        objectSpawnData = new List<int> { 4, 4, 1, 4,4,4,4,0, 0, 4, 3, 4, 2, 0, 1, 2, 0, 3, 3, 0, 2, 4, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 0, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 };
+        
         cherryController = GetComponent<CherryController>();
         itemController = GetComponent<ItemController>();
         StartCoroutine(SetObstacles());

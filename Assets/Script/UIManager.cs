@@ -25,11 +25,12 @@ public class UIManager : MonoBehaviour
     private ScoreUI scoreUI;
     private StartUI startUI;
     private SettingsUI settingsUI;
-
+    private GameOverUI gameOverUI;
+    
 
     private UIState currentState; // 이거 추가!
 
-    private bool isSettingsOpen = false;
+  
 
     private void Awake()
     {
@@ -50,8 +51,8 @@ public class UIManager : MonoBehaviour
         startUI.Init(this);
         settingsUI = GetComponentInChildren<SettingsUI>(true);
         settingsUI.Init(this);
-        //gameOverUI.GetComponentInChildren<GameOverUI>();
-        //gameOverUI.Init(this);
+        gameOverUI=GetComponentInChildren<GameOverUI>(true);
+        gameOverUI.Init(this);
     }
     private void Start()
     {
@@ -94,21 +95,13 @@ public class UIManager : MonoBehaviour
         healthBar.value = ratio;
     }
     
-    //public void ShowGameOverUI()
-    //{
-    //    gameOverUI.SetActive(true);
-    //}
-
-    //public void ShowStartUI()
-    //{
-    //    startUI.SetActive(true);
-    //}
+   
     public void ChangeState(UIState state) //이거 추가!!
     {
         currentState = state;
 
         //startUI.SetActive(currentState == UIState.Start);
-        //gameOverUI.SetActive(currentState==UIState.GameOver);
+        gameOverUI.SetActiveUI(currentState);
         scoreUI.SetActiveUI(currentState);
         startUI.SetActiveUI(currentState);
         settingsUI.SetActiveUI(currentState);

@@ -16,11 +16,12 @@ public class SettingsUI : BaseUI
 
     private void OnEnable()
     {
-        PauseGame();
+        GameManager.Instance.PauseGame();
+       
     }
-    void PauseGame()
+    private void OnDisable()
     {
-        Debug.Log("화면이 정지");
-        //Time.timeScale = pause ? 0f : 1f;
+        GameManager.Instance.ResumeGame();
     }
+    
 }

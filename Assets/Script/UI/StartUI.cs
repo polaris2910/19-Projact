@@ -15,7 +15,7 @@ public class StartUI : BaseUI
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
-        //startButton.onClick.AddListener(OnClickStartButton);
+        startButton.onClick.AddListener(OnClickStartButton);
         //exitButton.onClick.AddListener(OnClickExitButton);
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
+    [SerializeField] ObstacleController obstacleController;
     
     private void Awake()
     {
@@ -33,9 +33,20 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    public void PauseGame()
+    {
+
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
     public void StartGame()
     {
         Debug.Log("게임 시작!");
+        UIManager.Instance.ChangeState(UIState.Score);
+        obstacleController.Init();
     }
     public void GameOver()
     {

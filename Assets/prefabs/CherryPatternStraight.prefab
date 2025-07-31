@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4810604368424320797}
   - component: {fileID: 4868729123645106796}
   m_Layer: 0
-  m_Name: CherryPattern_1
+  m_Name: CherryPatternStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7327195276246600619, guid: f67b8dbe12046c64ba94fc26bb13e880, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7327195276246600619, guid: f67b8dbe12046c64ba94fc26bb13e880, type: 3}
       propertyPath: m_LocalPosition.z
@@ -307,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7327195276246600619, guid: f67b8dbe12046c64ba94fc26bb13e880, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7327195276246600619, guid: f67b8dbe12046c64ba94fc26bb13e880, type: 3}
       propertyPath: m_LocalPosition.z
@@ -427,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7327195276246600619, guid: f67b8dbe12046c64ba94fc26bb13e880, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7327195276246600619, guid: f67b8dbe12046c64ba94fc26bb13e880, type: 3}
       propertyPath: m_LocalPosition.z

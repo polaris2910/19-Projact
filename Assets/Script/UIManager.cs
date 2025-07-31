@@ -55,11 +55,9 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        //startUIScreen = GetComponentInChildren<StartUI>();
-        //if (startUIScreen != null)
-        //    startUIScreen.Init(this);
-
-        ChangeState(UIState.Score); //이거 바꿈
+        
+        ChangeState(UIState.Start); //스타팅화면이 디폴트
+       
     }
     private void Update()
     {
@@ -71,7 +69,16 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ChangeState(UIState.Settings);
+            if(currentState!=UIState.Settings)
+            {
+                ChangeState(UIState.Settings);
+            }
+            else
+            {
+                ChangeState(UIState.Score);
+                
+            }
+            
         }
 
     }

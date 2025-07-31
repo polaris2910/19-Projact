@@ -6,18 +6,19 @@ using UnityEngine.UIElements;
 
 public class CherryController : MonoBehaviour
 {
-    Vector3 CherryPatternPosition_0 = new Vector3(13f,-2f,0f);
-    Vector3 CherryPatternPosition_1 = new Vector3(13f, 0f, 0f);
-    Vector3 CherryPatternPosition_2=new Vector3(13f,1f,0f);
+    Vector3 CherryPositionLow = new Vector3(13f,-2f,0f);
+    Vector3 CherryPositionMiddle = new Vector3(13f, 0f, 0f);
+    Vector3 CherryPositionHigh=new Vector3(13f,1f,0f);
 
 
-    Queue<GameObject> CherryPool_0 = new Queue<GameObject>();
-    Queue<GameObject> CherryPool_1 = new Queue<GameObject>();
+    Queue<GameObject> CherryPoolStraight = new Queue<GameObject>();
+    Queue<GameObject> CherryPoolArch = new Queue<GameObject>();
     
     
 
-    [SerializeField] GameObject cherryPattern_0;
-    [SerializeField] GameObject cherryPattern_1;
+    [SerializeField] GameObject cherryPatternStraight;
+    [SerializeField] GameObject cherryPatternArch;
+        
   
     
 
@@ -26,20 +27,20 @@ public class CherryController : MonoBehaviour
         if(type==0)
         {
             
-            SpawnCherry(CherryPool_0, cherryPattern_0,CherryPatternPosition_0);
+            SpawnCherry(CherryPoolStraight, cherryPatternStraight,CherryPositionLow);
             
         }
         else if(type==1)
         {
-            SpawnCherry(CherryPool_1, cherryPattern_1, CherryPatternPosition_1);
+            SpawnCherry(CherryPoolArch, cherryPatternArch, CherryPositionMiddle);
         }
         else if(type ==2)
         {
-            SpawnCherry(CherryPool_1 , cherryPattern_1, CherryPatternPosition_2);
+            SpawnCherry(CherryPoolArch , cherryPatternArch, CherryPositionHigh);
         }
         else if(type==3)
         {
-            SpawnCherry(CherryPool_0, cherryPattern_0,CherryPatternPosition_0);
+            SpawnCherry(CherryPoolStraight, cherryPatternStraight,CherryPositionLow);
         }
         else
         {

@@ -29,6 +29,11 @@ public class AudioManager : MonoBehaviour
         PlaySound(jumpSound);
     }
 
+    public void SetVolume(float value)
+    {
+        audioSource.volume = value;
+    }
+
     public void PlayHurtSound()
     {
         PlaySound(HurtSound);

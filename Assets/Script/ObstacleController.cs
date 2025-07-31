@@ -61,16 +61,16 @@ public class ObstacleController : MonoBehaviour
         else if (type == 1)
         {
             
-            SpawnObstacles(objectPool_1,smallDownObstaclePrefab);
+            SpawnObstacles(objectPool_1,smallDownObstaclePrefab,DownSpawnPosition);
             
         }
         else if (type == 2)
         {
-            SpawnObstacles(objectPool_2,  bigDownObstaclePrefab);
+            SpawnObstacles(objectPool_2,  bigDownObstaclePrefab, DownSpawnPosition);
         }
         else if(type == 3) 
         {
-            SpawnObstacles(objectPool_3, bigUpObstaclePrefab);
+            SpawnObstacles(objectPool_3, bigUpObstaclePrefab,UpSpawnPosition);
         }
         else
         {
@@ -78,45 +78,28 @@ public class ObstacleController : MonoBehaviour
         }
 
     }
-    void SpawnObstacles(Queue<GameObject> queue,GameObject prefab)
+    void SpawnObstacles(Queue<GameObject> queue,GameObject prefab,Vector3 spawnPosition)
     {
         GameObject obj = null;
-        if (queue==objectPool_1 || queue==objectPool_2)
+        if (queue.Count > 0)
         {
-            
-            if (queue.Count > 0)
-            {
-                
-                obj = queue.Dequeue();
-                obj.transform.position = DownSpawnPosition;
-                obj.SetActive(true);
-                
 
-            }
-            else
-            {
-                obj=Instantiate(prefab, DownSpawnPosition, Quaternion.identity);
-                
-            }
-            StartCoroutine(ReturnToPool(queue, obj));
+            obj = queue.Dequeue();
+            obj.transform.position = spawnPosition;
+            obj.SetActive(true);
+
+
         }
-        else if(queue==objectPool_3 )
+        else
         {
-            if (queue.Count > 0)
-            {
-                
-                obj = queue.Dequeue();
-                obj.transform.position = UpSpawnPosition;
-                obj.SetActive(true);
-                
-            }
-            else
-            {
-                obj=Instantiate(prefab, UpSpawnPosition,Quaternion.identity);
-                
-            }
-            StartCoroutine(ReturnToPool(queue, obj));
+            obj = Instantiate(prefab, spawnPosition, Quaternion.identity);
+
         }
+        StartCoroutine(ReturnToPool(queue, obj));
+
+
+
+
     }
     IEnumerator ReturnToPool(Queue<GameObject> queue,GameObject obj)
     {

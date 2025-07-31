@@ -169,12 +169,11 @@ GameObject:
   - component: {fileID: 55522985}
   - component: {fileID: 55522988}
   - component: {fileID: 55522987}
-  - component: {fileID: 55522993}
   - component: {fileID: 55522992}
-  - component: {fileID: 55522991}
   - component: {fileID: 55522986}
   - component: {fileID: 55522994}
   - component: {fileID: 55522989}
+  - component: {fileID: 55522991}
   - component: {fileID: 55522990}
   m_Layer: 0
   m_Name: Player
@@ -374,9 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 55522989}
-  achievements: {fileID: 55522993}
-  healthChangeDelay: 3
-  <CurrentHealth>k__BackingField: 0
+  achievements: {fileID: 55522994}
+  healthChangeDelay: 1
   <Speed>k__BackingField: 6
   <ObjectSpawnInterval>k__BackingField: 3
 --- !u!114 &55522992
@@ -394,19 +392,6 @@ MonoBehaviour:
   health: 3
   speed: 1
   score: 0
---- !u!114 &55522993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 55522984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5a5db27fce76f44bd3a940b7b3d687, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourceManager: {fileID: 55522991}
 --- !u!114 &55522994
 MonoBehaviour:
   m_ObjectHideFlags: 0

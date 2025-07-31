@@ -8,6 +8,7 @@ public enum UIState
     Start,
     Exit,
     Score,
+    Settings,
     GameOver
 }
 public class UIManager : MonoBehaviour
@@ -15,12 +16,15 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
 
-    [SerializeField] private GameObject settingsPanel;
+    //[SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider healthBar;
-    [SerializeField] private GameObject gameOverUI;
-    [SerializeField] private GameObject startUI;
-    [SerializeField] private GameObject ScoreUI;
-    private StartUI startUIScreen;
+    
+    //[SerializeField] private GameObject gameOverUI;
+    //[SerializeField] private GameObject startUI;
+    
+    private ScoreUI scoreUI;
+    private StartUI startUI;
+    private SettingsUI settingsUI;
 
 
     private UIState currentState; // 이거 추가!
@@ -37,14 +41,25 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);  // 중복 방지
         }
+
+        //homeUI = GetComponentInChildren<HomeUI>();
+        //homeUI.Init(this);
+        scoreUI = GetComponentInChildren<ScoreUI>(true);
+        scoreUI.Init(this);
+        startUI = GetComponentInChildren<StartUI>(true);
+        startUI.Init(this);
+        settingsUI = GetComponentInChildren<SettingsUI>(true);
+        settingsUI.Init(this);
+        //gameOverUI.GetComponentInChildren<GameOverUI>();
+        //gameOverUI.Init(this);
     }
     private void Start()
     {
-        startUIScreen = GetComponentInChildren<StartUI>();
-        if (startUIScreen != null)
-            startUIScreen.Init(this);
+        //startUIScreen = GetComponentInChildren<StartUI>();
+        //if (startUIScreen != null)
+        //    startUIScreen.Init(this);
 
-        ChangeState(UIState.Start); //이거 바꿈
+        ChangeState(UIState.Score); //이거 바꿈
     }
     private void Update()
     {
@@ -56,15 +71,11 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isSettingsOpen = !isSettingsOpen;
-            settingsPanel.SetActive(isSettingsOpen);
-            PauseGame(isSettingsOpen);
+            ChangeState(UIState.Settings);
         }
+
     }
-    void PauseGame(bool pause)
-    {
-        Time.timeScale = pause ? 0f : 1f;
-    }
+    
     public void ShowGameOverUI()
     {
     //    gameOver.SetActive(true);
@@ -89,9 +100,12 @@ public class UIManager : MonoBehaviour
     {
         currentState = state;
 
-        startUI.SetActive(currentState == UIState.Start);
-        gameOverUI.SetActive(currentState==UIState.GameOver);
-        ScoreUI.SetActive(currentState==UIState.Score);
+        //startUI.SetActive(currentState == UIState.Start);
+        //gameOverUI.SetActive(currentState==UIState.GameOver);
+        scoreUI.SetActiveUI(currentState);
+        startUI.SetActiveUI(currentState);
+        settingsUI.SetActiveUI(currentState);
+
 
     }
 

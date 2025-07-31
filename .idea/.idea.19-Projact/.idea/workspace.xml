@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7807b137-aef4-44a4-b30b-1c5334813d1d" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.19-Projact/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.19-Projact/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScenes.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScenes.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +95,7 @@
       <updated>1753860458181</updated>
       <workItem from="1753860459114" duration="548000" />
       <workItem from="1753861227436" duration="17000" />
+      <workItem from="1753939171760" duration="300000" />
     </task>
     <servers />
   </component>

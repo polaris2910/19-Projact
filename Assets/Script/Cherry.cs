@@ -7,8 +7,9 @@ public class Cherry : MonoBehaviour,IConsumable
     ResourceManager _resourceManager;
     public void Eat(ResourceManager resourceManager)
     {
-        this._resourceManager = resourceManager;
-        //점수올라가기
+        _resourceManager = resourceManager;
+
+        _resourceManager.ChangeScore(10);
         
         this.gameObject.SetActive(false);
     }

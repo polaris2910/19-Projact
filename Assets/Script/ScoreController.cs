@@ -27,7 +27,7 @@ public class ScoreController : MonoBehaviour,IConsumable
         }
         else
         {
-            _resourceManager.ChangeScore(500);
+            _resourceManager.ChangeScore(300);
         }
 
         

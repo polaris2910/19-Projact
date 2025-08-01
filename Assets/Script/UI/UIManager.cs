@@ -5,18 +5,20 @@ using UnityEngine.UI;
 
 public enum UIState
 {
+    Achievement,
     Start,
     Exit,
     Score,
     Settings,
     GameOver
+
 }
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+    
 
 
-   
     [SerializeField] private Slider healthBar;
     
    
@@ -25,7 +27,7 @@ public class UIManager : MonoBehaviour
     private StartUI startUI;
     private SettingsUI settingsUI;
     private GameOverUI gameOverUI;
-    
+    private AchievementUI achievementUI;
 
     private UIState currentState; // 이거 추가!
 
@@ -52,6 +54,9 @@ public class UIManager : MonoBehaviour
         settingsUI.Init(this);
         gameOverUI=GetComponentInChildren<GameOverUI>(true);
         gameOverUI.Init(this);
+        achievementUI = GetComponentInChildren<AchievementUI>(true);
+        achievementUI.Init(this);
+        
     }
     private void Start()
     {
@@ -80,6 +85,10 @@ public class UIManager : MonoBehaviour
             }
             
         }
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            ChangeState(UIState.Achievement);
+        }
 
     }
     
@@ -100,8 +109,12 @@ public class UIManager : MonoBehaviour
         scoreUI.SetActiveUI(currentState);
         startUI.SetActiveUI(currentState);
         settingsUI.SetActiveUI(currentState);
+        achievementUI.SetActiveUI(currentState);
+
 
 
     }
+    
 
+    
 }

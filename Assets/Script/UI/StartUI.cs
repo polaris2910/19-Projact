@@ -16,7 +16,7 @@ public class StartUI : BaseUI
     {
         base.Init(uiManager);
         startButton.onClick.AddListener(OnClickStartButton);
-        exitButton.onClick.AddListener(OnClickExitButton);
+        //exitButton.onClick.AddListener(OnClickExitButton);
     }
 
     public void OnClickStartButton()

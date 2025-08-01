@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BGloop : BaseMover
+public class BackgroundMover: BaseMover
 {
     
     private float resetPosition = -32f;

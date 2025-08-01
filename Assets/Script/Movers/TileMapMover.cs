@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TilemapScroller : BaseMover
+public class TilemapMover : BaseMover
 {
     
     private float resetPosition = -45f;

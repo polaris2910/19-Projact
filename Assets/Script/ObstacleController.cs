@@ -24,7 +24,7 @@ public class ObstacleController : MonoBehaviour
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
 
 
-    private void Start()
+    public void Init()
     {
         objectSpawnData = new List<int> { 4, 4, 1, 4,4,4,4,0, 0, 4, 3, 4, 2, 0, 1, 2, 0, 3, 3, 0, 2, 4, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 0, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 };
         
@@ -36,7 +36,7 @@ public class ObstacleController : MonoBehaviour
 
     
 
-    IEnumerator SetObstacles()
+    private IEnumerator SetObstacles()
     {
 
         //특정 간격으로 오브젝트에 대한 정보를 끌어오고 싶어

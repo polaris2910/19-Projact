@@ -6,11 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
-    public void StartGame()
-    {
-        Debug.Log("게임 시작!");
-    }
+    [SerializeField] ObstacleController obstacleController;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -23,10 +20,33 @@ public class GameManager : MonoBehaviour
             return;
         }
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.S))
+        {
+            StartGame();
+        }
+    }
     public void RestartGame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+    public void StartGame()
+    {
+        Debug.Log("게임 시작!");
+        UIManager.Instance.ChangeState(UIState.Score);
+        obstacleController.Init();
     }
     public void GameOver()
     {

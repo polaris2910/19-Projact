@@ -38,7 +38,7 @@ public class Achievements : MonoBehaviour
     }
     private void TriggerPerfectRun()
     {
-        Debug.Log("피해 없이 장애물 10개 돌파!");
-         //UI, 보상, 애니메이션 등 추가
+        UIManager.Instance.ShowAchievementUI();
+        //UI, 보상, 애니메이션 등 추가
     }
 }

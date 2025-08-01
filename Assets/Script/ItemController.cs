@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    
+    [SerializeField] ObstacleController obstacleController;
     [SerializeField] GameObject healthItem;
     [SerializeField] GameObject speedUpItem;
     [SerializeField] GameObject purpleGem;
@@ -18,6 +18,7 @@ public class ItemController : MonoBehaviour
     private void Start()
     {
         PrepareData();
+        obstacleController.OnTypeSet += SetItem;
     }
 
     private void PrepareData()

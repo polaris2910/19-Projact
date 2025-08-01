@@ -13,14 +13,17 @@ public class CherryController : MonoBehaviour
 
     Queue<GameObject> CherryPoolStraight = new Queue<GameObject>();
     Queue<GameObject> CherryPoolArch = new Queue<GameObject>();
-    
-    
 
+
+    [SerializeField] ObstacleController obstacleController;
     [SerializeField] GameObject cherryPatternStraight;
     [SerializeField] GameObject cherryPatternArch;
-        
-  
-    
+
+
+    private void Start()
+    {
+        obstacleController.OnTypeSet += SetCherry;
+    }
 
     public void SetCherry(int type)
     {

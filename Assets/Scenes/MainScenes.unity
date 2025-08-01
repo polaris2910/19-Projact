@@ -466,6 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6753a4e9e7a48b0489f8acdc77b429b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleController: {fileID: 168912585}
   cherryPatternStraight: {fileID: 3850099668747105248, guid: ca9f29f7cf5d37047ace7397969cd3b6, type: 3}
   cherryPatternArch: {fileID: 3850099668747105248, guid: 1a339d1d5fbc4c54caa7f25d2979b3a9, type: 3}
 --- !u!114 &168912588
@@ -480,6 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b95ecb4a845f843aa585f84ae77aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleController: {fileID: 168912585}
   healthItem: {fileID: 5408318316650060951, guid: 325b7a05d57ff414780531167f1e8590, type: 3}
   speedUpItem: {fileID: 7872602134052685762, guid: 5aba7d93795863f49a6b55f874c07002, type: 3}
   purpleGem: {fileID: 7872602134052685762, guid: 81c122003d7d54446a07f6cc026364f0, type: 3}

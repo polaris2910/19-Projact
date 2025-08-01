@@ -1,4 +1,4 @@
-using Microsoft.VisualBasic;
+ï»¿using Microsoft.VisualBasic;
 using System;
 using System.Buffers.Text;
 using System.Collections;
@@ -16,14 +16,14 @@ public class StartUI : BaseUI
     {
         base.Init(uiManager);
         startButton.onClick.AddListener(OnClickStartButton);
-        //exitButton.onClick.AddListener(OnClickExitButton);
+        exitButton.onClick.AddListener(OnClickExitButton);
     }
 
     public void OnClickStartButton()
     {
-        // Start ¹öÆ° ´©¸£¸é UI ²ô°í °ÔÀÓ ½ÃÀÛ ·ÎÁ÷ ¼öÇà
+        // Start ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         gameObject.SetActive(false);
-        GameManager.Instance.StartGame(); // ¿¹½Ã: GameManager¿¡ StartGame() ¸¸µé¾î¼­ ¿¬°á
+        GameManager.Instance.StartGame(); // ï¿½ï¿½ï¿½ï¿½: GameManagerï¿½ï¿½ StartGame() ï¿½ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½
     }
 
     public void OnClickExitButton()

@@ -29,6 +29,7 @@ public class ResourceManager : MonoBehaviour
     public float ObjectSpawnInterval { get; private set; } = 3f;
 
     private float previousSpeed;
+    private float totalDistance = 0f;
 
     public SpriteRenderer spriteRenderer; // [추가] Inspector에서 Player의 SpriteRenderer를 연결
     private Coroutine _blinkCoroutine;    // [추가] 깜빡임 코루틴 핸들러
@@ -63,6 +64,15 @@ public class ResourceManager : MonoBehaviour
                 //animationHandler.InvincibilityEnd();
                 StopBlink();
             }
+        }
+        float totalDistancescore = Speed * Time.deltaTime;
+        totalDistance += totalDistancescore;
+
+        int scoreToAdd = Mathf.FloorToInt(totalDistance);
+        if (scoreToAdd > 0)
+        {
+            ChangeScore(scoreToAdd);
+            totalDistance -= scoreToAdd;
         }
     }
 

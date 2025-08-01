@@ -33,8 +33,9 @@ public class Player : MonoBehaviour
 
          if (_animator == null)
              Debug.LogError("Animator not found!");
-        slideCollider.enabled = false;
-        normalCollider.enabled = true;
+
+     slideCollider.enabled = false;  
+     normalCollider.enabled = true;
 
     }
 

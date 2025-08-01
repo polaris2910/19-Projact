@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
@@ -133,11 +134,11 @@ public class ResourceManager : MonoBehaviour
     {
         previousSpeed = Speed;
         Speed += speed;
-        
+        OnChangeSpeed?.Invoke(Speed);
        
         ChangeObjectSpawnInterval(Speed);
     }
-
+    public Action<float> OnChangeSpeed;
     void ChangeObjectSpawnInterval(float speed)
     {
         Debug.Log($"스폰 수치변화 , 현재 스피드{speed}");

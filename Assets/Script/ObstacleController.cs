@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,15 +27,20 @@ public class ObstacleController : MonoBehaviour
 
     public void Init()
     {
-        objectSpawnData = new List<int> { 4, 4, 1, 4,4,4,4,0, 0, 4, 3, 4, 2, 0, 1, 2, 0, 3, 3, 0, 2, 4, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 0, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 };
-        
+        objectSpawnData = new List<int> { 4, 4, 1, 4, 4, 4, 4, 0, 0, 4, 3, 4, 2, 0, 1, 2, 0, 3, 3, 0, 2, 4, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 0, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 };
+
         cherryController = GetComponent<CherryController>();
         itemController = GetComponent<ItemController>();
         StartCoroutine(SetObstacles());
     }
+    private void Start()
+    {
+        Init();
+    }
 
 
-    
+    public event Action<int> OnTypeSet;
+        
 
     private IEnumerator SetObstacles()
     {
@@ -45,8 +51,8 @@ public class ObstacleController : MonoBehaviour
         {
             
             SetType(data);
-            cherryController.SetCherry(data);
-            itemController.SetItem(data);
+            OnTypeSet?.Invoke(data);
+            
             yield return new WaitForSeconds(obstacleInterval);
         }
     }

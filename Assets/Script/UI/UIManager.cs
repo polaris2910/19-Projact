@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public enum UIState
 {
     Achievement,
-    Start,
-    Exit,
+    
     Score,
     Settings,
     GameOver
@@ -24,7 +23,6 @@ public class UIManager : MonoBehaviour
    
     
     private ScoreUI scoreUI;
-    private StartUI startUI;
     private SettingsUI settingsUI;
     private GameOverUI gameOverUI;
     private AchievementUI achievementUI;
@@ -48,8 +46,6 @@ public class UIManager : MonoBehaviour
         //homeUI.Init(this);
         scoreUI = GetComponentInChildren<ScoreUI>(true);
         scoreUI.Init(this);
-        startUI = GetComponentInChildren<StartUI>(true);
-        startUI.Init(this);
         settingsUI = GetComponentInChildren<SettingsUI>(true);
         settingsUI.Init(this);
         gameOverUI=GetComponentInChildren<GameOverUI>(true);
@@ -61,7 +57,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         
-        ChangeState(UIState.Start); //스타팅화면이 디폴트
+        ChangeState(UIState.Score); //스타팅화면이 디폴트
        
     }
     private void Update()
@@ -107,7 +103,7 @@ public class UIManager : MonoBehaviour
         //startUI.SetActive(currentState == UIState.Start);
         gameOverUI.SetActiveUI(currentState);
         scoreUI.SetActiveUI(currentState);
-        startUI.SetActiveUI(currentState);
+        
         settingsUI.SetActiveUI(currentState);
         achievementUI.SetActiveUI(currentState);
 

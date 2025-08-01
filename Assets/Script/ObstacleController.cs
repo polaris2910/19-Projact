@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,8 @@ public class ObstacleController : MonoBehaviour
     }
 
 
+    public event Action<int> OnTypeSet;
+        
 
     private IEnumerator SetObstacles()
     {
@@ -48,8 +51,8 @@ public class ObstacleController : MonoBehaviour
         {
             
             SetType(data);
-            cherryController.SetCherry(data);
-            itemController.SetItem(data);
+            OnTypeSet?.Invoke(data);
+            
             yield return new WaitForSeconds(obstacleInterval);
         }
     }

@@ -38,7 +38,7 @@ public class Achievements : MonoBehaviour
     }
     private void TriggerPerfectRun()
     {
-        UIManager.Instance.ShowAchievementUI();
+        UIManager.Instance.ChangeState(UIState.Achievement);
         //UI, 보상, 애니메이션 등 추가
     }
 }

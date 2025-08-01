@@ -5,7 +5,7 @@ public class StartToMain : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene("MainScenes"); 
+        SceneManager.LoadScene("MainScenes");
     }
 
 }

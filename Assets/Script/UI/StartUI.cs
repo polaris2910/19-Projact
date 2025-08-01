@@ -7,32 +7,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartUI : BaseUI
-{
-    [SerializeField] private Button startButton;
-    [SerializeField] private Button exitButton;
+//public class StartUI : BaseUI
+//{
+    //[SerializeField] private Button startButton;
+    //[SerializeField] private Button exitButton;
 
-    public override void Init(UIManager uiManager)
-    {
-        base.Init(uiManager);
-        startButton.onClick.AddListener(OnClickStartButton);
-        exitButton.onClick.AddListener(OnClickExitButton);
-    }
+    //public override void Init(UIManager uiManager)
+    //{
+    //    base.Init(uiManager);
+    //    startButton.onClick.AddListener(OnClickStartButton);
+    //    exitButton.onClick.AddListener(OnClickExitButton);
+    //}
 
-    public void OnClickStartButton()
-    {
-        // Start ��ư ������ UI ���� ���� ���� ���� ����
-        gameObject.SetActive(false);
-        GameManager.Instance.StartGame(); // ����: GameManager�� StartGame() ���� ����
-    }
+    //public void OnClickStartButton()
+    //{
+    //    // Start ��ư ������ UI ���� ���� ���� ���� ����
+    //    gameObject.SetActive(false);
+    //    GameManager.Instance.StartGame(); // ����: GameManager�� StartGame() ���� ����
+    //}
 
-    public void OnClickExitButton()
-    {
-        Application.Quit();
-    }
+    //public void OnClickExitButton()
+    //{
+    //    Application.Quit();
+    //}
 
-    protected override UIState GetUIState()
-    {
-        return UIState.Start;
-    }
-}
+    //protected override UIState GetUIState()
+    //{
+    //    return UIState.Start;
+    //}
+//}

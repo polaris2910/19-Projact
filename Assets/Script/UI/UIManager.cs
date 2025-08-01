@@ -83,10 +83,6 @@ public class UIManager : MonoBehaviour
 
     }
     
-    public void ShowGameOverUI()
-    {
-    //    gameOver.SetActive(true);
-    }
 
     private void HealthBarUpdate()
     {

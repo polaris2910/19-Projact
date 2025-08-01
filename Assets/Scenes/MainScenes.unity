@@ -459,7 +459,7 @@ MonoBehaviour:
   healthChangeDelay: 1
   <Speed>k__BackingField: 6
   <ObjectSpawnInterval>k__BackingField: 3
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 55522988}
 --- !u!114 &55522992
 MonoBehaviour:
   m_ObjectHideFlags: 0

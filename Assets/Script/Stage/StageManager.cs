@@ -9,7 +9,7 @@ public class StageManager : MonoBehaviour
     
     public static StageManager Instance;
 
-    private Stage currentStage;
+    public Stage currentStage;
 
     public Action<Stage> OnStageChange;
 

@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        UIManager.Instance.ChangeState(UIState.Game);
+        
+        obstacleController.SetData();
     }
     public void PauseGame()
     {
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
+        
         Debug.Log("게임 시작!");
         Time.timeScale = 1f;
         UIManager.Instance.ChangeState(UIState.Game);

@@ -12,6 +12,8 @@ public class GameUI : BaseUI
 
     UIManager _uIManager;
 
+    Stage currentStage => StageManager.Instance.currentStage;
+    
     public override void Init(UIManager uiManager)
     {
         _uIManager = uiManager;
@@ -23,22 +25,13 @@ public class GameUI : BaseUI
     }
 
 
-    private void OnEnable()
-    {
-        
-        StageManager.Instance.OnStageChange += UpdateStageText;
-
-    }
-
-    private void OnDisable()
-    {
-        StageManager.Instance.OnStageChange -= UpdateStageText;
-    }
+    
     private void Update()
     {
         scoreText.text = ResourceManager.Instance.Score.ToString();
         
         HealthBarUpdate();
+        StageTextUpdate();
         
     }
 
@@ -52,13 +45,13 @@ public class GameUI : BaseUI
        
         healthBar.value = ratio;
     }
-    void UpdateStageText(Stage stage)
+    void StageTextUpdate()
     {
-        if(stage==Stage.Stage_1)
+        if(currentStage==Stage.Stage_1)
         {
             stageText.text = 1.ToString();
         }
-        else if(stage==Stage.Stage_2)
+        else if(currentStage==Stage.Stage_2)
         {
             stageText.text=2.ToString();
         }

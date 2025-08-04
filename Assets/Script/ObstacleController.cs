@@ -26,6 +26,11 @@ public class ObstacleController : MonoBehaviour
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
     [SerializeField] Stage_1 stage_1;
     [SerializeField] Stage_2 stage_2;
+    [SerializeField] SpriteRenderer backgroundSprite_1;
+    [SerializeField] SpriteRenderer backgroundSprite_2;
+    [SerializeField] SpriteRenderer backgroundSprite_3;
+    [SerializeField] SpriteRenderer backgroundSprite_4;
+
     Stage selectedStage = Stage.Stage_1;
     public void Init()
     {
@@ -50,18 +55,27 @@ public class ObstacleController : MonoBehaviour
     public void SetData()
     {
         StopAllCoroutines();
+        
         //이전 스테이지 코루틴을 멈추게 하는 장치 필요
         if (selectedStage == Stage.Stage_1)
         {
             Debug.Log("1스테이지");
             objectSpawnData = stage_1.objectDataList;
             ResourceManager.Instance.ChangeObjectSpawnInterval(stage_1.spawnInterval);
+            backgroundSprite_1.color=stage_1.backgroundColor;
+            backgroundSprite_2.color=stage_1.backgroundColor;
+            backgroundSprite_3.color=stage_1.backgroundColor;
+            backgroundSprite_4.color=stage_1.backgroundColor;
         }
         else if (selectedStage == Stage.Stage_2)
         {
             Debug.Log("2스테이지");
             objectSpawnData = stage_2.objectDataList;
             ResourceManager.Instance.ChangeObjectSpawnInterval(stage_2.spawnInterval);
+            backgroundSprite_1.color = stage_2.backgroundColor;
+            backgroundSprite_2.color = stage_2.backgroundColor;
+            backgroundSprite_3.color = stage_2.backgroundColor;
+            backgroundSprite_4.color = stage_2.backgroundColor;
         }
         StartCoroutine(SetObstacles(objectSpawnData));
     }

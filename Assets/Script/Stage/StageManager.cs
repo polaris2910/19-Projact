@@ -6,27 +6,25 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
 
-    [SerializeField] SpriteRenderer background_1;
-    [SerializeField] SpriteRenderer background_2;
-    [SerializeField] SpriteRenderer background_3;
-    [SerializeField] SpriteRenderer background_4;
+    
     public static StageManager Instance;
 
-    private Stage currentStage;
+    public Stage currentStage;
 
-
+    public Action<Stage> OnStageChange;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            Debug.Log("스테이지매니저 인스턴스");
         }
         
     }
 
 
-    public Action<Stage> OnStageChange;
+    
     public void SetStage(Stage stage)
     {
         if(currentStage!=stage)

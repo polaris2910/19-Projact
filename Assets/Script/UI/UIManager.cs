@@ -7,7 +7,7 @@ public enum UIState
 {
     Achievement,
     
-    Score,
+    Game,
     Settings,
     GameOver,
     Clear
@@ -19,11 +19,11 @@ public class UIManager : MonoBehaviour
     
 
 
-    [SerializeField] private Slider healthBar;
+    
     
    
     
-    private ScoreUI scoreUI;
+    private GameUI gameUI;
     private SettingsUI settingsUI;
     private GameOverUI gameOverUI;
     private AchievementUI achievementUI;
@@ -46,8 +46,8 @@ public class UIManager : MonoBehaviour
 
         //homeUI = GetComponentInChildren<HomeUI>();
         //homeUI.Init(this);
-        scoreUI = GetComponentInChildren<ScoreUI>(true);
-        scoreUI.Init(this);
+        gameUI = GetComponentInChildren<GameUI>(true);
+        gameUI.Init(this);
         settingsUI = GetComponentInChildren<SettingsUI>(true);
         settingsUI.Init(this);
         gameOverUI=GetComponentInChildren<GameOverUI>(true);
@@ -60,16 +60,13 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         
-        ChangeState(UIState.Score); //스타팅화면이 디폴트
+        ChangeState(UIState.Game); //스타팅화면이 디폴트
        
     }
     private void Update()
     {
 
-        HealthBarUpdate();
-
-        float ratio = ResourceManager.Instance.CurrentHealth;
-        healthBar.value = ratio;
+        
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -79,7 +76,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                ChangeState(UIState.Score);
+                ChangeState(UIState.Game);
                 
             }
             
@@ -89,11 +86,7 @@ public class UIManager : MonoBehaviour
     }
     
 
-    private void HealthBarUpdate()
-    {
-        float ratio = ResourceManager.Instance.CurrentHealth;
-        healthBar.value = ratio;
-    }
+    
     
    
     public void ChangeState(UIState state) //이거 추가!!
@@ -102,7 +95,7 @@ public class UIManager : MonoBehaviour
 
         //startUI.SetActive(currentState == UIState.Start);
         gameOverUI.SetActiveUI(currentState);
-        scoreUI.SetActiveUI(currentState);
+        gameUI.SetActiveUI(currentState);
         
         settingsUI.SetActiveUI(currentState);
         achievementUI.SetActiveUI(currentState);

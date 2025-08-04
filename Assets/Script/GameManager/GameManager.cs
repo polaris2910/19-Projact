@@ -30,8 +30,12 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
+        ResourceManager.Instance.SetScore(0);
+        ResourceManager.Instance.SetHealth(3f);
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        UIManager.Instance.ChangeState(UIState.Game);
+        
+        obstacleController.SetData();
     }
     public void PauseGame()
     {
@@ -44,9 +48,11 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
-        Debug.Log("게임 시작!");
+        ResourceManager.Instance.SetScore(0);
+        ResourceManager.Instance.SetHealth(3f);
+
         Time.timeScale = 1f;
-        UIManager.Instance.ChangeState(UIState.Score);
+        UIManager.Instance.ChangeState(UIState.Game);
         obstacleController.SetData();
     }
     public void GameOver()

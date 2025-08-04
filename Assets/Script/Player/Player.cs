@@ -5,7 +5,11 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
     {
+    ResourceManager _resourceManager;
+
     public float jumpForce = 5f;
+    private int jumpCount = 0;
+    private int maxJumpCount = 2;
 
     public Transform groundCheck; //바닥 체크용
     public LayerMask groundLayer; 
@@ -13,9 +17,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;
 
-    private int jumpCount = 0;
-    private int maxJumpCount = 2;
-    ResourceManager _resourceManager;
+    [SerializeField] private BoxCollider2D normalCollider;
+    [SerializeField] private BoxCollider2D slideCollider;
 
     private bool wasGrounded = false;
     void Start()
@@ -30,7 +33,11 @@ public class Player : MonoBehaviour
 
          if (_animator == null)
              Debug.LogError("Animator not found!");
-     }
+
+     slideCollider.enabled = false;  
+     normalCollider.enabled = true;
+
+    }
 
     void Update()
     {
@@ -46,9 +53,9 @@ public class Player : MonoBehaviour
         if (grounded && !wasGrounded)
             jumpCount = 0;
         wasGrounded = grounded; // 이전 상태 기록
-    }
+    }// 바닥 체크 및 점프 카운트 리셋
 
-    void HandleJump()
+    void HandleJump()          // 점프 입력 처리
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumpCount) 
         {
@@ -75,8 +82,10 @@ public class Player : MonoBehaviour
     {
         bool isSliding = Input.GetKey(KeyCode.DownArrow); // 아래키 입력시 슬라이드
         _animator?.SetBool("isSliding", isSliding);       // 슬라이드 애니메이션
+  
     }
-
+    
+    
     bool IsGrounded()
     {
         if (groundCheck == null) return false;

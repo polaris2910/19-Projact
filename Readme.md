@@ -6,14 +6,14 @@
 - 팀원: 서승우
 - 팀원: 주슬기
 - 팀원: 하민재
-
+--------------------------
 ## FOX RUN
 아래 내용을 잘 읽어보시고 게임을 즐겨주세요
 
-게임 미리 보기
-<img width="800" height="600" alt="Image" src="https://github.com/user-attachments/assets/f7c39f5d-e15d-4602-a59a-d398da2b17f0" />
+## 게임 미리 보기
+<img src="https://github.com/user-attachments/assets/f7c39f5d-e15d-4602-a59a-d398da2b17f0" alt="게임 미리 보기" width="600"/>
 
-목차
+## 목차
 1. 게임 소개
 2. 게임 규칙
 3. 조작 방법
@@ -40,6 +40,7 @@
 | [좌shift]   | 슬라이드    |
 | [ESC]       | 메뉴 표시   |
 -------------------------------------
+
 
 
 

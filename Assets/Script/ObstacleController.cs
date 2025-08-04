@@ -49,7 +49,8 @@ public class ObstacleController : MonoBehaviour
     }
     public void SetData()
     {
-        //코루틴을 멈추게 하는 장치 필요
+        StopAllCoroutines();
+        //이전 스테이지 코루틴을 멈추게 하는 장치 필요
         if (selectedStage == Stage.Stage_1)
         {
             Debug.Log("1스테이지");

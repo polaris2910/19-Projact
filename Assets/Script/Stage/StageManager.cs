@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+
+    [SerializeField] SpriteRenderer background_1;
+    [SerializeField] SpriteRenderer background_2;
+    [SerializeField] SpriteRenderer background_3;
+    [SerializeField] SpriteRenderer background_4;
     public static StageManager Instance;
 
     private Stage currentStage;
+
+
 
     private void Awake()
     {
@@ -31,6 +38,8 @@ public class StageManager : MonoBehaviour
 
     }
 }
+
+
 
 public enum Stage
 {

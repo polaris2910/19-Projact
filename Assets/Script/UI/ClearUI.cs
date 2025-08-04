@@ -16,10 +16,7 @@ public class ClearUI : BaseUI
         base.Init(uiManager);
         nextStageButton.onClick.AddListener(NextStage);
     }
-    private void OnEnable()
-    {
-        Time.timeScale = 0f;
-    }
+    
 
     void NextStage()
     {

@@ -15,7 +15,7 @@ public class ObstacleController : MonoBehaviour
 
     float obstacleInterval=> ResourceManager.Instance.ObjectSpawnInterval;
     Vector3 DownSpawnPosition = new Vector3(13f, -2.1f, 0f);
-    Vector3 UpSpawnPosition= new Vector3(13f, 5f, 0f);
+    Vector3 UpSpawnPosition= new Vector3(13f, 3.51f, 0f);
 
 
     public List<int> objectSpawnData; 
@@ -27,7 +27,7 @@ public class ObstacleController : MonoBehaviour
 
     public void Init()
     {
-        objectSpawnData = new List<int> { 4, 4, 1, 4, 4, 4, 4, 0, 0, 4, 3, 4, 2, 0, 1, 2, 
+        objectSpawnData = new List<int> { 2, 3, 1, 3, 3, 1, 4, 0, 0, 4, 3, 4, 2, 0, 1, 2, 
             0, 3, 3, 0, 2, 4, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 0, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 };
 
         cherryController = GetComponent<CherryController>();

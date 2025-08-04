@@ -5,6 +5,7 @@ public class Achievements : MonoBehaviour
     public ResourceManager resourceManager; // 플레이어 체력 추적용
 
     private int obstacleCount = 0;
+    private bool achievementUnlocked = false;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -19,11 +20,12 @@ public class Achievements : MonoBehaviour
 
             Debug.Log($"장애물 통과: {obstacleCount} ");
 
-            if (obstacleCount >= 10)
+            if (obstacleCount >= 10 && !achievementUnlocked)
             {
                 if (!resourceManager.TookDamageDuringRun)
                 {
                     TriggerPerfectRun(); // 업적 달성
+                    achievementUnlocked = true;
                 }
 
                 obstacleCount = 0;

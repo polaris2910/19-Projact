@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
+        ResourceManager.Instance.SetScore(0);
         Time.timeScale = 1f;
         UIManager.Instance.ChangeState(UIState.Game);
         
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
-        
+        ResourceManager.Instance.SetScore(0);
         Debug.Log("게임 시작!");
         Time.timeScale = 1f;
         UIManager.Instance.ChangeState(UIState.Game);

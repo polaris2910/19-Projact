@@ -17,6 +17,10 @@ public class AchievementUI : BaseUI
         StartCoroutine(FadeAchievement());
     }
 
+    private void OnDisable()
+    {
+        UIManager.Instance.ChangeState(UIState.Game);
+    }
 
 
 

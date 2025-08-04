@@ -170,18 +170,22 @@ public class ResourceManager : MonoBehaviour
 
     private IEnumerator ReduceSpeed(float speed)
     {
-        Debug.Log("속도감소코루틴");
+        
         yield return new WaitForSeconds(10f);
-        Debug.Log("속도감소");
+        
         ChangeSpeed(-speed);
     }
 
     public void ChangeScore(int score)
     {
         Score += score;
-        Debug.Log($"얻은 점수 {score}, 현재점수 {Score}");
+        
     }
 
+    public void SetScore(int score)
+    {
+        Score = score;
+    }
 
     private void Death()
     {

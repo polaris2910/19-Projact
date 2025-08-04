@@ -2,14 +2,14 @@
 아래 내용을 잘 읽어보시고 게임을 즐겨주세요
 
 게임 미리 보기
-<img width="800" height="600" alt="Image" src="https://github.com/user-attachments/assets/f7c39f5d-e15d-4602-a59a-d398da2b17f0" />
+<사진>
 
 목차
 1. 게임 소개
 2. 게임 규칙
 3. 조작 방법
 
-##🦊 게임 소개
+## 🦊 게임 소개
 게임명 : Fox Run
 장르 : 런 액션 게임
 간단한 설명
@@ -28,4 +28,5 @@
 [SPACE]　　　　　　：점프
 [좌shift]　　　　　：슬라이드
 [ESC]　　　　　    ：메뉴 표시
+
 

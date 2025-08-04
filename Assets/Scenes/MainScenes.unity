@@ -172,7 +172,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0, y: -0.06823067}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -183,7 +183,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.22}
+  m_Size: {x: 0.25, y: 0.18353865}
   m_EdgeRadius: 0
 --- !u!4 &33606551
 Transform:
@@ -518,7 +518,9 @@ MonoBehaviour:
   smallDownObstaclePrefab: {fileID: 4275659189581513816, guid: 1eec83f7f5193c24fb1f57f9db57d712, type: 3}
   bigDownObstaclePrefab: {fileID: 8023189599874658843, guid: 3e7ce3c0fde359644a7b0d1189c0d733, type: 3}
   bigUpObstaclePrefab: {fileID: 7875893678911423017, guid: b9f457d6d9fc09e488f0f9a4f7e4711f, type: 3}
-  objectSpawnData: 010000000000000000000000030000000200000000000000010000000200000000000000030000000300000000000000020000000000000002000000010000000100000001000000010000000100000002000000000000000000000000000000030000000000000001000000010000000300000002000000010000000100000001000000010000000100000001000000020000000100000001000000010000000100000001000000
+  objectSpawnData: 
+  stage_1: {fileID: 1962898959}
+  stage_2: {fileID: 1962898958}
 --- !u!4 &168912586
 Transform:
   m_ObjectHideFlags: 0
@@ -4476,6 +4478,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6483644057383213798, guid: 7f22478573f474e45a44ab4f4519a161, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483644057383213798, guid: 7f22478573f474e45a44ab4f4519a161, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483644057383213798, guid: 7f22478573f474e45a44ab4f4519a161, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7240796107028212338, guid: 7f22478573f474e45a44ab4f4519a161, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -4936,6 +4950,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1962898957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1962898960}
+  - component: {fileID: 1962898959}
+  - component: {fileID: 1962898958}
+  m_Layer: 0
+  m_Name: StageInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1962898958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962898957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b754611545dcda344b4a1189c938aad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1962898959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962898957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715b19cb89ec8834c8de4fe2e4af1965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1962898960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962898957}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.829002, y: 1.4651788, z: -0.9764297}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4949,3 +5020,4 @@ SceneRoots:
   - {fileID: 168912586}
   - {fileID: 237939680}
   - {fileID: 896887151}
+  - {fileID: 1962898960}

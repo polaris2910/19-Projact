@@ -146,14 +146,19 @@ public class ResourceManager : MonoBehaviour
         Speed += speed;
         OnChangeSpeed?.Invoke(Speed);
        
-        ChangeObjectSpawnInterval(Speed);
+        MatchObjectSpawnInterval(Speed);
     }
     public Action<float> OnChangeSpeed;
-    void ChangeObjectSpawnInterval(float speed)
+    void MatchObjectSpawnInterval(float speed)
     {
         
         ObjectSpawnInterval = ObjectSpawnInterval*(previousSpeed/speed);
    
+    }
+
+    public void ChangeObjectSpawnInterval(float interval)
+    {
+        ObjectSpawnInterval = interval;
     }
     public void ReduceSpeedStart(float speed)
     {

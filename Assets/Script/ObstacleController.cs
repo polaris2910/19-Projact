@@ -15,39 +15,51 @@ public class ObstacleController : MonoBehaviour
 
     float obstacleInterval=> ResourceManager.Instance.ObjectSpawnInterval;
     Vector3 DownSpawnPosition = new Vector3(13f, -2.1f, 0f);
-    Vector3 UpSpawnPosition= new Vector3(13f, 5f, 0f);
+    Vector3 UpSpawnPosition= new Vector3(13f, 3.51f, 0f);
 
 
-    public List<int> objectSpawnData; 
+    public List<int> objectSpawnData;
+  
 
     Queue<GameObject> objectPool_1 = new Queue<GameObject>();
     Queue<GameObject> objectPool_2 = new Queue<GameObject>();
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
-
-
+    [SerializeField] Stage_1 stage_1;
+    [SerializeField] Stage_2 stage_2;
+    Stage selectedStage = Stage.Stage_2;
     public void Init()
     {
-        objectSpawnData = new List<int> { 4, 4, 1, 4, 4, 4, 4, 0, 0, 4, 3, 4, 2, 0, 1, 2, 0, 3, 3, 0, 2, 4, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 0, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 };
-
+        
         cherryController = GetComponent<CherryController>();
         itemController = GetComponent<ItemController>();
-        StartCoroutine(SetObstacles());
+        
+
+        if (selectedStage== Stage.Stage_1)
+        {
+            objectSpawnData=stage_1.objectDataList;
+            ResourceManager.Instance.ChangeObjectSpawnInterval(stage_1.spawnInterval);
+        }
+        else if(selectedStage== Stage.Stage_2)
+        {
+            objectSpawnData=stage_2.objectDataList;
+            ResourceManager.Instance.ChangeObjectSpawnInterval(stage_2.spawnInterval);
+        }
+            StartCoroutine(SetObstacles(objectSpawnData));
     }
     private void Start()
     {
         Init();
+        
     }
 
 
     public event Action<int> OnTypeSet;
         
 
-    private IEnumerator SetObstacles()
+    private IEnumerator SetObstacles(List<int> obstacleInfoList)
     {
 
-        //특정 간격으로 오브젝트에 대한 정보를 끌어오고 싶어
-        //그럼 코루틴을 사용해서 꺼내올까?
-        foreach (int data in objectSpawnData)
+        foreach (int data in obstacleInfoList)
         {
             
             SetType(data);
@@ -94,20 +106,14 @@ public class ObstacleController : MonoBehaviour
             obj = queue.Dequeue();
             obj.transform.position = spawnPosition;
             obj.SetActive(true);
-
-
         }
         else
         {
             obj = Instantiate(prefab, spawnPosition, Quaternion.identity);
-
         }
         StartCoroutine(ReturnToPool(queue, obj));
-
-
-
-
     }
+
     IEnumerator ReturnToPool(Queue<GameObject> queue,GameObject obj)
     {
         yield return new WaitForSeconds(10f);

@@ -11,7 +11,7 @@
 아래 내용을 잘 읽어보시고 게임을 즐겨주세요
 
 게임 미리 보기
-<사진>
+<img width="800" height="600" alt="Image" src="https://github.com/user-attachments/assets/f7c39f5d-e15d-4602-a59a-d398da2b17f0" />
 
 목차
 1. 게임 소개
@@ -40,6 +40,7 @@
 | [좌shift]   | 슬라이드    |
 | [ESC]       | 메뉴 표시   |
 -------------------------------------
+
 
 
 

@@ -521,6 +521,10 @@ MonoBehaviour:
   objectSpawnData: 
   stage_1: {fileID: 1962898959}
   stage_2: {fileID: 1962898958}
+  backgroundSprite_1: {fileID: 282976671}
+  backgroundSprite_2: {fileID: 1295649138}
+  backgroundSprite_3: {fileID: 1156751570}
+  backgroundSprite_4: {fileID: 229216807}
 --- !u!4 &168912586
 Transform:
   m_ObjectHideFlags: 0
@@ -5250,6 +5254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d668dacacfe1de64aa2eafbc160185a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background_1: {fileID: 0}
+  background_2: {fileID: 0}
+  background_3: {fileID: 0}
+  background_4: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

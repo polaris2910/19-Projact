@@ -26,32 +26,45 @@ public class ObstacleController : MonoBehaviour
     Queue<GameObject> objectPool_3 = new Queue<GameObject>();
     [SerializeField] Stage_1 stage_1;
     [SerializeField] Stage_2 stage_2;
-    Stage selectedStage = Stage.Stage_2;
+    Stage selectedStage = Stage.Stage_1;
     public void Init()
     {
         
         cherryController = GetComponent<CherryController>();
         itemController = GetComponent<ItemController>();
-        
+        StageManager.Instance.OnStageChange += UpdateStage;
+        SetData();
 
-        if (selectedStage== Stage.Stage_1)
-        {
-            objectSpawnData=stage_1.objectDataList;
-            ResourceManager.Instance.ChangeObjectSpawnInterval(stage_1.spawnInterval);
-        }
-        else if(selectedStage== Stage.Stage_2)
-        {
-            objectSpawnData=stage_2.objectDataList;
-            ResourceManager.Instance.ChangeObjectSpawnInterval(stage_2.spawnInterval);
-        }
-            StartCoroutine(SetObstacles(objectSpawnData));
+        
+    }
+
+    void UpdateStage(Stage stage)
+    {
+        selectedStage = stage;
     }
     private void Start()
     {
         Init();
         
     }
-
+    public void SetData()
+    {
+        StopAllCoroutines();
+        //이전 스테이지 코루틴을 멈추게 하는 장치 필요
+        if (selectedStage == Stage.Stage_1)
+        {
+            Debug.Log("1스테이지");
+            objectSpawnData = stage_1.objectDataList;
+            ResourceManager.Instance.ChangeObjectSpawnInterval(stage_1.spawnInterval);
+        }
+        else if (selectedStage == Stage.Stage_2)
+        {
+            Debug.Log("2스테이지");
+            objectSpawnData = stage_2.objectDataList;
+            ResourceManager.Instance.ChangeObjectSpawnInterval(stage_2.spawnInterval);
+        }
+        StartCoroutine(SetObstacles(objectSpawnData));
+    }
 
     public event Action<int> OnTypeSet;
         
@@ -91,9 +104,13 @@ public class ObstacleController : MonoBehaviour
         {
             SpawnObstacles(objectPool_3, bigUpObstaclePrefab,UpSpawnPosition);
         }
+        else if(type==5)
+        {
+            UIManager.Instance.ChangeState(UIState.Clear);
+        }
         else
         {
-            
+
         }
 
     }

@@ -80,9 +80,33 @@ public class Player : MonoBehaviour
 
     void HandleSlide() 
     {
-        bool isSliding = Input.GetKey(KeyCode.DownArrow); // 아래키 입력시 슬라이드
+        bool isSliding = Input.GetKey(KeyCode.LeftShift); // 아래키 입력시 슬라이드
         _animator?.SetBool("isSliding", isSliding);       // 슬라이드 애니메이션
-  
+
+        if (normalCollider != null)
+        {
+            if (isSliding)
+            {
+                normalCollider.enabled = false;
+            }
+            else
+            {
+                normalCollider.enabled = true;
+            }
+        }
+
+        if (slideCollider != null)
+        {
+            if (isSliding)
+            {
+                slideCollider.enabled = true;
+            }
+            else
+            {
+                slideCollider.enabled = false;
+            }
+        }
+
     }
     
     

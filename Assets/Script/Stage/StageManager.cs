@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     public static StageManager Instance;
+
+    private Stage currentStage;
 
     private void Awake()
     {
@@ -15,9 +18,17 @@ public class StageManager : MonoBehaviour
         
     }
 
-    public Stage SetStage(Stage stage)
+
+    public Action<Stage> OnStageChange;
+    public void SetStage(Stage stage)
     {
-        return stage;
+        if(currentStage!=stage)
+        {
+            OnStageChange?.Invoke(stage);
+        }
+        currentStage = stage;
+        
+
     }
 }
 

@@ -24,6 +24,7 @@ public class ClearUI : BaseUI
     void NextStage()
     {
         StageManager.Instance.SetStage(Stage.Stage_2);
+        GameManager.Instance.StartGame();
     }
 
 

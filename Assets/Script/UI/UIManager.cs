@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     private SettingsUI settingsUI;
     private GameOverUI gameOverUI;
     private AchievementUI achievementUI;
+    private ClearUI clearUI;
 
     private UIState currentState; // 이거 추가!
 
@@ -53,7 +54,8 @@ public class UIManager : MonoBehaviour
         gameOverUI.Init(this);
         achievementUI = GetComponentInChildren<AchievementUI>(true);
         achievementUI.Init(this);
-        
+        clearUI = GetComponentInChildren<ClearUI>(true);
+        clearUI.Init(this);
     }
     private void Start()
     {
@@ -104,7 +106,7 @@ public class UIManager : MonoBehaviour
         
         settingsUI.SetActiveUI(currentState);
         achievementUI.SetActiveUI(currentState);
-
+        clearUI.SetActiveUI(currentState) ;
 
 
     }

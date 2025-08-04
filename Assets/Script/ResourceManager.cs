@@ -105,6 +105,10 @@ public class ResourceManager : MonoBehaviour
 
         return true;
     }
+    public void SetHealth(float health)
+    {
+        CurrentHealth = health;
+    }
     private void StartBlink()
     {
         Debug.Log("블링크 시작"); 

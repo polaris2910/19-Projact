@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         ResourceManager.Instance.SetScore(0);
+        ResourceManager.Instance.SetHealth(3f);
         Time.timeScale = 1f;
         UIManager.Instance.ChangeState(UIState.Game);
         
@@ -48,7 +49,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         ResourceManager.Instance.SetScore(0);
-        Debug.Log("게임 시작!");
+        ResourceManager.Instance.SetHealth(3f);
+
         Time.timeScale = 1f;
         UIManager.Instance.ChangeState(UIState.Game);
         obstacleController.SetData();

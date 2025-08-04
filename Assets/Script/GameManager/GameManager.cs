@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("게임 시작!");
         Time.timeScale = 1f;
-        UIManager.Instance.ChangeState(UIState.Score);
+        UIManager.Instance.ChangeState(UIState.Game);
         obstacleController.SetData();
     }
     public void GameOver()

@@ -11,19 +11,20 @@ public class StageManager : MonoBehaviour
 
     private Stage currentStage;
 
-
+    public Action<Stage> OnStageChange;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            Debug.Log("스테이지매니저 인스턴스");
         }
         
     }
 
 
-    public Action<Stage> OnStageChange;
+    
     public void SetStage(Stage stage)
     {
         if(currentStage!=stage)

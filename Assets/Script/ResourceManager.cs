@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
+#if UNITY_EDITOR
 using UnityEditor.Build.Content;
+#endif
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour

@@ -81,10 +81,7 @@ public class UIManager : MonoBehaviour
             }
             
         }
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            ChangeState(UIState.Achievement);
-        }
+        
 
     }
     

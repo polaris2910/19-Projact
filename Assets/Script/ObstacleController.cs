@@ -91,9 +91,13 @@ public class ObstacleController : MonoBehaviour
         {
             SpawnObstacles(objectPool_3, bigUpObstaclePrefab,UpSpawnPosition);
         }
+        else if(type==5)
+        {
+            UIManager.Instance.ChangeState(UIState.Clear);
+        }
         else
         {
-            
+
         }
 
     }

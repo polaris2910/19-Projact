@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    
+    public static StageManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        
+    }
+
+    public Stage SetStage(Stage stage)
+    {
+        return stage;
+    }
 }
 
 public enum Stage

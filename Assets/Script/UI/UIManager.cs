@@ -9,7 +9,8 @@ public enum UIState
     
     Score,
     Settings,
-    GameOver
+    GameOver,
+    Clear
 
 }
 public class UIManager : MonoBehaviour

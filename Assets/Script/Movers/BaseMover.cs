@@ -5,14 +5,13 @@ using UnityEngine;
 public abstract class BaseMover : MonoBehaviour
 {
     float movingSpeed;
-    // Start is called before the first frame update
 
     private void Start()
     {
         movingSpeed=ResourceManager.Instance.Speed;
         ResourceManager.Instance.OnChangeSpeed += UpdateSpeed;
     }
-    // Update is called once per frame
+
     protected virtual void Update()
     {
         Move();

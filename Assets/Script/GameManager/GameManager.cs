@@ -30,12 +30,8 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
-        ResourceManager.Instance.SetScore(0);
-        ResourceManager.Instance.SetHealth(3f);
-        Time.timeScale = 1f;
-        UIManager.Instance.ChangeState(UIState.Game);
-        
-        obstacleController.SetData();
+        SceneManager.LoadScene("MainScenes");
+        StartGame();
     }
     public void PauseGame()
     {

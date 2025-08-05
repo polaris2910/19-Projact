@@ -1,0 +1,167 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ObstacleController : MonoBehaviour
+{
+    
+
+    CherryController cherryController;
+    ItemController itemController;
+    [SerializeField] GameObject smallDownObstaclePrefab;
+    [SerializeField] GameObject bigDownObstaclePrefab;
+    [SerializeField] GameObject bigUpObstaclePrefab;
+
+    float obstacleInterval=> ResourceManager.Instance.ObjectSpawnInterval;
+    Vector3 DownSpawnPosition = new Vector3(13f, -2.1f, 0f);
+    Vector3 UpSpawnPosition= new Vector3(13f, 3.51f, 0f);
+
+
+    public List<int> objectSpawnData;
+  
+
+    Queue<GameObject> objectPool_1 = new Queue<GameObject>();
+    Queue<GameObject> objectPool_2 = new Queue<GameObject>();
+    Queue<GameObject> objectPool_3 = new Queue<GameObject>();
+    [SerializeField] Stage_1 stage_1;
+    [SerializeField] Stage_2 stage_2;
+    [SerializeField] SpriteRenderer backgroundSprite_1;
+    [SerializeField] SpriteRenderer backgroundSprite_2;
+    [SerializeField] SpriteRenderer backgroundSprite_3;
+    [SerializeField] SpriteRenderer backgroundSprite_4;
+
+    Stage selectedStage = Stage.Stage_1;
+    public void Init()
+    {
+        
+        cherryController = GetComponent<CherryController>();
+        itemController = GetComponent<ItemController>();
+        StageManager.Instance.OnStageChange += UpdateStage;
+        SetData();
+
+        
+    }
+
+    void UpdateStage(Stage stage)
+    {
+        selectedStage = stage;
+    }
+    private void Start()
+    {
+        Init();
+        
+    }
+    public void SetData()
+    {
+        StopAllCoroutines();
+        
+        //이전 스테이지 코루틴을 멈추게 하는 장치 필요
+        if (selectedStage == Stage.Stage_1)
+        {
+            Debug.Log("1스테이지");
+            objectSpawnData = stage_1.objectDataList;
+            ResourceManager.Instance.ChangeObjectSpawnInterval(stage_1.spawnInterval);
+            backgroundSprite_1.color=stage_1.backgroundColor;
+            backgroundSprite_2.color=stage_1.backgroundColor;
+            backgroundSprite_3.color=stage_1.backgroundColor;
+            backgroundSprite_4.color=stage_1.backgroundColor;
+        }
+        else if (selectedStage == Stage.Stage_2)
+        {
+            Debug.Log("2스테이지");
+            objectSpawnData = stage_2.objectDataList;
+            ResourceManager.Instance.ChangeObjectSpawnInterval(stage_2.spawnInterval);
+            backgroundSprite_1.color = stage_2.backgroundColor;
+            backgroundSprite_2.color = stage_2.backgroundColor;
+            backgroundSprite_3.color = stage_2.backgroundColor;
+            backgroundSprite_4.color = stage_2.backgroundColor;
+        }
+        StartCoroutine(SetObstacles(objectSpawnData));
+    }
+
+    public event Action<int> OnTypeSet;
+        
+
+    private IEnumerator SetObstacles(List<int> obstacleInfoList)
+    {
+
+        foreach (int data in obstacleInfoList)
+        {
+            
+            SetType(data);
+            OnTypeSet?.Invoke(data);
+            
+            yield return new WaitForSeconds(obstacleInterval);
+        }
+    }
+
+
+
+    public void SetType(int type)
+    {
+        if (type == 0 )
+        {
+            
+        }
+        else if (type == 1)
+        {
+            
+            SpawnObstacles(objectPool_1,smallDownObstaclePrefab,DownSpawnPosition);
+            
+        }
+        else if (type == 2)
+        {
+            SpawnObstacles(objectPool_2,  bigDownObstaclePrefab, DownSpawnPosition);
+        }
+        else if(type == 3) 
+        {
+            SpawnObstacles(objectPool_3, bigUpObstaclePrefab,UpSpawnPosition);
+        }
+        else if(type==5)
+        {
+            UIManager.Instance.ChangeState(UIState.Clear);
+        }
+        else
+        {
+
+        }
+
+    }
+    void SpawnObstacles(Queue<GameObject> queue,GameObject prefab,Vector3 spawnPosition)
+    {
+        GameObject obj = null;
+        if (queue.Count > 0)
+        {
+
+            obj = queue.Dequeue();
+            obj.transform.position = spawnPosition;
+            obj.SetActive(true);
+        }
+        else
+        {
+            obj = Instantiate(prefab, spawnPosition, Quaternion.identity);
+        }
+        StartCoroutine(ReturnToPool(queue, obj));
+    }
+
+    IEnumerator ReturnToPool(Queue<GameObject> queue,GameObject obj)
+    {
+        yield return new WaitForSeconds(10f);
+        
+        queue.Enqueue(obj);
+        obj.SetActive(false);
+        
+
+    }
+
+
+    //void SpawnDownObstacles(GameObject downPrefab)
+    //{
+    //    Instantiate(downPrefab, new Vector3(7f, 0f, 0f), Quaternion.identity);
+    //}
+    //void SpawnUpObstacles(GameObject upPrefab)
+    //{
+    //    Instantiate(upPrefab, new Vector3(7f, 3f, 0f), Quaternion.identity);
+    //}
+}
